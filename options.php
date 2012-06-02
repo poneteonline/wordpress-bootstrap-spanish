@@ -1,14 +1,14 @@
 <?php
 /**
- * A unique identifier is defined to store the options in the database and reference them from the theme.
- * By default it uses the theme name, in lowercase and without spaces, but this can be changed if needed.
- * If the identifier changes, it'll appear as if the options have been reset.
+ * Un identificador único es creado para almacenar las opciones en la base de datos y referenciarlas desde el tema.
+ * De forma predeterminada usa el nombre del tema en minúscula y sin espacios, pero esto se puede cambiar si es necesario.
+ * Si el identificador cambia, aparecerá como si las opciones se hubieran restablecido.
  * 
  */
 
 function optionsframework_option_name() {
 
-	// This gets the theme name from the stylesheet (lowercase and without spaces)
+	// Esto toma el nombre del tema desde la hoja de estilos (en minúscula y sin espacios)
 	$themename = get_theme_data(STYLESHEETPATH . '/style.css');
 	$themename = $themename['Name'];
 	$themename = preg_replace("/\W/", "", strtolower($themename) );
@@ -21,8 +21,8 @@ function optionsframework_option_name() {
 }
 
 /**
- * Defines an array of options that will be used to generate the settings page and be saved in the database.
- * When creating the "id" fields, make sure to use all lowercase and no spaces.
+ * Define un arreglo de opciones que serán usadas para generar la pagina de ajustes y guardarlos en la base de datos.
+ * Cuándo se estén creando los campos "id", asegurate de usar todas las letras en minúscula y sin espacios.
  *  
  */
 
@@ -30,7 +30,7 @@ function optionsframework_options() {
 
 	$themesPath = dirname(__FILE__) . '/admin/themes';
 	
-	// Insert default option
+	// Insertar la opción predeterminada
 	$theList['default'] = OPTIONS_FRAMEWORK_DIRECTORY . '/themes/default-thumbnail-100x60.png';
 	
 	if ($handle = opendir( $themesPath )) {
@@ -48,138 +48,138 @@ function optionsframework_options() {
 	
 	//print_r($theList);
 	
-	// fixed or scroll position
-	$fixed_scroll = array("fixed" => "Fixed","scroll" => "Scroll");
+	// posición fija o de desplazamiento
+	$fixed_scroll = array("fixed" => "Fija","scroll" => "Desplazable");
 	
-	// Multicheck Defaults
+	// Opciones predeterminadas de Multicheck
 	$multicheck_defaults = array("one" => "1","five" => "1");
 	
-	// Background Defaults
+	// Opciones predeterminadas de Background Defaults
 	$background_defaults = array('color' => '', 'image' => '', 'repeat' => 'repeat','position' => 'top center','attachment'=>'scroll');
 	
-	// Pull all the categories into an array
+	// Pone todas las categorías en un arreglo
 	$options_categories = array();  
 	$options_categories_obj = get_categories();
 	foreach ($options_categories_obj as $category) {
     	$options_categories[$category->cat_ID] = $category->cat_name;
 	}
 	
-	// Pull all the pages into an array
+	// Pone todas las páginas en un arreglo
 	$options_pages = array();  
 	$options_pages_obj = get_pages('sort_column=post_parent,menu_order');
-	$options_pages[''] = 'Select a page:';
+	$options_pages[''] = 'Selecciona una página:';
 	foreach ($options_pages_obj as $page) {
     	$options_pages[$page->ID] = $page->post_title;
 	}
 		
-	// If using image radio buttons, define a directory path
+	// Si se esta usando botones radiales en imagen, define una ruta al directorio
 	$imagepath =  get_bloginfo('stylesheet_directory') . '/images/';
 		
 	$options = array();
 		
-	$options[] = array( "name" => "Typography",
+	$options[] = array( "name" => "Tipografía",
 						"type" => "heading");
 						
-	$options[] = array( "name" => "Headings",
-						"desc" => "Used in H1, H2, H3, H4, H5 & H6 tags.",
+	$options[] = array( "name" => "Cabeceras",
+						"desc" => "Usado en etiquetas H1, H2, H3, H4, H5 & H6",
 						"id" => "heading_typography",
 						"std" => array('face' => '"Helvetica Neue",Helvetica,Arial,sans-serif','style' => 'bold','color' => '#404040'),
 						"type" => "wpbs_typography");
 						
-	$options[] = array( "name" => "Main Body Text",
-						"desc" => "Used in P tags.",
+	$options[] = array( "name" => "Texto principal del cuerpo",
+						"desc" => "Usado en etiquetas P",
 						"id" => "main_body_typography",
 						"std" => array('face' => '"Helvetica Neue",Helvetica,Arial,sans-serif','style' => 'normal','color' => '#404040'),
 						"type" => "wpbs_typography");
 						
-	$options[] = array( "name" => "Link Color",
-						"desc" => "Default used if no color is selected.",
+	$options[] = array( "name" => "Color del enlace",
+						"desc" => "Predeterminado si ningún color es seleccionado.",
 						"id" => "link_color",
 						"std" => "",
 						"type" => "color");
 					
-	$options[] = array( "name" => "Link:hover Color",
-						"desc" => "Default used if no color is selected.",
+	$options[] = array( "name" => "Color del enlace:hover",
+						"desc" => "Predeterminado si ningún color es seleccionado.",
 						"id" => "link_hover_color",
 						"std" => "",
 						"type" => "color");
 						
-	$options[] = array( "name" => "Link:active Color",
-						"desc" => "Default used if no color is selected.",
+	$options[] = array( "name" => "Color del enlace:active",
+						"desc" => "Predeterminado si ningún color es seleccionado.",
 						"id" => "link_active_color",
 						"std" => "",
 						"type" => "color");
 						
-	$options[] = array( "name" => "Top Nav",
+	$options[] = array( "name" => "Barra de navegación superior",
 						"type" => "heading");
 						
-	$options[] = array( "name" => "Position",
-						"desc" => "Fixed to the top of the window or scroll with content.",
+	$options[] = array( "name" => "Posición",
+						"desc" => "Fija a la parte superior de la ventana o desplazable con el contenido.",
 						"id" => "nav_position",
 						"std" => "fixed",
 						"type" => "select",
 						"class" => "mini", //mini, tiny, small
 						"options" => $fixed_scroll);
 						
-	$options[] = array( "name" => "Top nav background color",
-						"desc" => "Default used if no color is selected.",
+	$options[] = array( "name" => "Color de fondo de la barra de navegación superior",
+						"desc" => "Predeterminado si ningún color es seleccionado.",
 						"id" => "top_nav_bg_color",
 						"std" => "#222222",
 						"type" => "color");
 						
-	$options[] = array( "name" => "Check to use a gradient for top nav background",
-						"desc" => "Use gradient",
+	$options[] = array( "name" => "Marcar para usar un degradado para el fondo de la barra de navegación superior",
+						"desc" => "Usar un degradado",
 						"id" => "showhidden_gradient",
 						"std" => "1",
 						"type" => "checkbox");
 	
-	$options[] = array( "name" => "Bottom gradient color",
-						"desc" => "Top nav background color used as top gradient color.",
+	$options[] = array( "name" => "Color del degradado inferior",
+						"desc" => "Color de fondo de la barra de navegación superior usado como color degradado principal",
 						"id" => "top_nav_bottom_gradient_color",
 						"std" => "#333333",
 						"class" => "hidden",
 						"type" => "color");
 						
-	$options[] = array( "name" => "Top nav item color",
-						"desc" => "Link color.",
+	$options[] = array( "name" => "Color de los ítems en la barra de navegación superior",
+						"desc" => "Color del enlace.",
 						"id" => "top_nav_link_color",
 						"std" => "#BFBFBF",
 						"type" => "color");
 						
-	$options[] = array( "name" => "Top nav item hover color",
-						"desc" => "Link hover color.",
+	$options[] = array( "name" => "Color:hover de los ítems en la barra de navegación superior",
+						"desc" => "Color:hover del enlace.",
 						"id" => "top_nav_link_hover_color",
 						"std" => "#FFFFFF",
 						"type" => "color");
 						
-	$options[] = array( "name" => "Top nav dropdown item color",
-						"desc" => "Dropdown item color.",
+	$options[] = array( "name" => "Color de los ítems en el menú desplegable de la barra de navegación superior",
+						"desc" => "Color de los ítems en el menú desplegable.",
 						"id" => "top_nav_dropdown_item",
 						"std" => "#555555",
 						"type" => "color");
 						
-	$options[] = array( "name" => "Top nav dropdown item hover bg color",
-						"desc" => "Background of dropdown item hover color.",
+	$options[] = array( "name" => "Color:hover de fondo en los ítems del menú desplegable de la barra de navegación superior",
+						"desc" => "Color:hover de fondo en los ítems del menú desplegable",
 						"id" => "top_nav_dropdown_hover_bg",
 						"std" => "#0088CC",
 						"type" => "color");
 	
-	$options[] = array( "name" => "Search bar",
-						"desc" => "Show search bar in top nav",
+	$options[] = array( "name" => "Barra de búsqueda",
+						"desc" => "Mostrar la barra de búsqueda en la barra de navegación superior.",
 						"id" => "search_bar",
 						"std" => "1",
 						"type" => "checkbox");
 						
-	$options[] = array( "name" => "Theme",
+	$options[] = array( "name" => "Tema",
 						"type" => "heading");
 						
-	$options[] = array( "name" => "Bootswatch.com Themes",
-						"desc" => "Use theme from bootswatch.com. Note: This may override other styles set in the theme options panel.",
+	$options[] = array( "name" => "Temas Bootswatch.com",
+						"desc" => "Usar los temas de Bootswatch.com. Nota: esto puede sobrescribir otros estilos establecidos en el panel de opciones del tema.",
 						"id" => "showhidden_themes",
 						"std" => "0",
 						"type" => "checkbox");
 						
-	$options[] = array( "name" => "Select a theme",
+	$options[] = array( "name" => "Selecciona un tema",
 						"id" => "wpbs_theme",
 						"std" => "default",
 						"class" => "hidden",
@@ -187,34 +187,34 @@ function optionsframework_options() {
 						"options" => $theList
 						);
 						
-	$options[] = array( "name" => "Refresh themes from Bootswatch",
+	$options[] = array( "name" => "Actualizar los temas de Bootswatch.com",
 						"type" => "themecheck",
 						"id" => "themecheck"
 						);
 						
-	$options[] = array( "name" => "Other Settings",
+	$options[] = array( "name" => "Otros ajustes",
 						"type" => "heading");
 						
-	$options[] = array( "name" => "Homepage page template hero-unit background color",
-						"desc" => "Default used if no color is selected.",
+	$options[] = array( "name" => "Color de fondo para la plantilla de la página de inicio hero-unit",
+						"desc" => "Predeterminado si ningún color es seleccionado",
 						"id" => "hero_unit_bg_color",
 						"std" => "#F5F5F5",
 						"type" => "color");
 						
-	$options[] = array( "name" => "'Comments are closed' message on pages",
-						"desc" => "Suppress 'Comments are closed' message",
+	$options[] = array( "name" => "Mensaje en las páginas 'Los comentarios están cerrados'",
+						"desc" => "Eliminar el mensaje 'Los comentarios están cerrados'",
 						"id" => "suppress_comments_message",
 						"std" => "1",
 						"type" => "checkbox");
 						
-	$options[] = array( "name" => "Blog page 'hero' unit",
-						"desc" => "Display blog page hero unit",
+	$options[] = array( "name" => "Página del blog 'hero' unit",
+						"desc" => "Mostrar la página del blog hero unit",
 						"id" => "blog_hero",
 						"std" => "1",
 						"type" => "checkbox");
 	
 	$options[] = array( "name" => "CSS",
-						"desc" => "Additional CSS",
+						"desc" => "CSS adicional",
 						"id" => "wpbs_css",
 						"std" => "",
 						"type" => "textarea");
@@ -233,7 +233,7 @@ jQuery(document).ready(function($) {
 		action: 'wpbs_theme_check',
 	};
 
-	// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+	// Puesto que la versión 2.8 de ajaxurl siempre está definida en la cabecera de administración y apunta a admin-ajax.php
 	jQuery('#check-bootswatch').click( function(){ 
 		jQuery.post(ajaxurl, data, function(response) {
 			alert(response);
@@ -247,7 +247,7 @@ jQuery(document).ready(function($) {
 add_action('wp_ajax_wpbs_theme_check', 'wpbs_refresh_themes');
 
 function wpbs_refresh_themes() {
-	// this gets the xml feed from thomas park
+	// esto toma el feed xml de thomas park
 	$xml_feed_url = 'http://feeds.pinboard.in/rss/u:thomaspark/t:bootswatch/';
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $xml_feed_url);
@@ -260,14 +260,14 @@ function wpbs_refresh_themes() {
 	
     $cnt = count($feed->item);
     
-    // go through each item found
+    // pasa a través de cada ítem encontrado
     for($i=0; $i<$cnt; $i++)
     {
 		$url 	= $feed->item[$i]->link;
 		$title 	= strtolower($feed->item[$i]->title);
 		$desc = $feed->item[$i]->description;
 		
-		// retrieve the contents of the css file
+		// obtiene el contenido del archivo css
 		$css_url = $url;
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $css_url);
@@ -285,15 +285,15 @@ function wpbs_refresh_themes() {
 		$thumb_contents = curl_exec($ch);
 		curl_close($ch);
 		
-		// create the file using the title of the item and then close it
+		// crea el archivo usando el titulo del ítem y luego lo cierra
 		$template_path = get_template_directory();
 		$filenameCSS = $template_path . '/admin/themes/' . $title . '.css';
-		$filehandle = fopen($filenameCSS, 'w') or die("can't open file - " . $filenameCSS);
+		$filehandle = fopen($filenameCSS, 'w') or die("no se puede abrir el archivo - " . $filenameCSS);
 		fwrite($filehandle, $css_contents);
 		fclose($filehandle);
 		
 		$filenameThumb = $template_path . '/admin/themes/' .$title . '-thumbnail.png';
-		$filehandle = fopen($filenameThumb, 'w') or die("can't open file - " . $filenameThumb);
+		$filehandle = fopen($filenameThumb, 'w') or die("no se puede abrir el archivo - " . $filenameThumb);
 		fwrite($filehandle, $thumb_contents);
 		fclose($filehandle);
 		// resize thumb
@@ -302,9 +302,9 @@ function wpbs_refresh_themes() {
 		
     }
     
-	echo "Themes refreshed.";
+	echo "Temas actualizados.";
 
-	die(); // this is required to return a proper result
+	die(); // Esto se necesita para devolver un resultado adecuado
 }
 
 

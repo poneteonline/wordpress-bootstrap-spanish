@@ -14,25 +14,25 @@
 				
 		<meta name="viewport" content="width=device-width; initial-scale=1.0">
 		
-		<!-- icons & favicons -->
-		<!-- For iPhone 4 -->
+		<!-- iconos & favicons -->
+		<!-- Para iPhone 4 -->
 		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo get_template_directory_uri(); ?>/library/images/icons/h/apple-touch-icon.png">
-		<!-- For iPad 1-->
+		<!-- Para iPad 1-->
 		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo get_template_directory_uri(); ?>/library/images/icons/m/apple-touch-icon.png">
-		<!-- For iPhone 3G, iPod Touch and Android -->
+		<!-- Para iPhone 3G, iPod Touch y Android -->
 		<link rel="apple-touch-icon-precomposed" href="<?php echo get_template_directory_uri(); ?>/library/images/icons/l/apple-touch-icon-precomposed.png">
-		<!-- For Nokia -->
+		<!-- Para Nokia -->
 		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/library/images/icons/l/apple-touch-icon.png">
-		<!-- For everything else -->
+		<!-- Para todo lo demás -->
 		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
 		
-		<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+		<!-- Toma el jQuery del CDN de Google, con una URL relativa al protocolo; convirtiendolo en local si es necesario -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script>window.jQuery || document.write(unescape('%3Cscript src="<?php echo get_template_directory_uri(); ?>/library/js/libs/jquery-1.7.1.min.js"%3E%3C/script%3E'))</script>
 		
 		<script src="<?php echo get_template_directory_uri(); ?>/library/js/modernizr.full.min.js"></script>
 		
-		<!-- media-queries.js (fallback) -->
+		<!-- media-queries.js (de reserva) -->
 		<!--[if lt IE 9]>
 			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>			
 		<![endif]-->
@@ -44,9 +44,9 @@
 		
   		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 		
-		<!-- wordpress head functions -->
+		<!-- funciones del head de wordpress -->
 		<?php wp_head(); ?>
-		<!-- end of wordpress head -->
+		<!-- fin del head de wordpress -->
 		
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css">
 		
@@ -221,9 +221,9 @@
 		
 		<?php 
 
-			// check wp user level
+			// comprueba el nivel del usuario wp
 			get_currentuserinfo(); 
-			// store to use later
+			// almacena para usar después
 			global $user_level; 
 		
 		?>
@@ -249,14 +249,14 @@
 								</a>
 								
 								<div class="nav-collapse">
-									<?php bones_main_nav(); // Adjust using Menus in Wordpress Admin ?>
+									<?php bones_main_nav(); // Ajusta usando Menús en el administrador de Wordpress ?>
 								</div>
 								
 							</nav>
 							
 							<?php if(of_get_option('search_bar', '1')) {?>
 							<form class="navbar-search pull-right" role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
-								<input name="s" id="s" type="text" class="search-query" placeholder="<?php _e('Search','bonestheme'); ?>">
+								<input name="s" id="s" type="text" class="search-query" placeholder="<?php _e('Buscar','bonestheme'); ?>">
 							</form>
 							<?php } ?>
 							
@@ -264,8 +264,8 @@
 					</div>
 				</div>
 			
-			</div> <!-- end #inner-header -->
+			</div> <!-- fin de #inner-header -->
 		
-		</header> <!-- end header -->
+		</header> <!-- fin de la cabecera -->
 		
 		<div class="container-fluid">

@@ -1,17 +1,17 @@
 /*
 Theme Name: wp-bootstrap
 Theme URI: http://320press.com/wpbs
-Description: A simple responsive theme based on twitter's bootstrap framework. Includes multiple page templates, two different sidebars and a theme options panel.
+Description: Un simple tema adaptable basado en el marco de desarrollo bootstrap de Twitter. Incluye varias plantillas de página, dos barras laterales diferentes y un panel de opciones del tema.
 Version: 2.0
-Author: 320press
-Author URI: http://320press.com
+Author: 320press (Traducción emsNet)
+Author URI: http://320press.com - http//www.emsnet.com
 Tags: black, white, one-column, two-columns, flexible-width, custom-background, custom-colors, custom-menu, full-width-template, theme-options
 License: GNU General Public License v2.0 & Apache License 2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html http://www.apache.org/licenses/LICENSE-2.0
 */
 
 /* micro clearfix: http://nicolasgallagher.com/micro-clearfix-hack/ */
-/* For modern browsers */
+/* Para navegadores modernos */
 .clearfix:before,
 .clearfix:after {
     content:"";
@@ -22,12 +22,12 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html http://www.apache.org/lice
     clear:both;
 }
 
-/* For IE 6/7 (trigger hasLayout) */
+/* Para IE 6/7 (trigger hasLayout) */
 .clearfix {
     zoom:1;
 }
 
-/* wp-specific classes */
+/* clases específicas de wordpress */
 .wp-caption{
 	
 }
@@ -44,7 +44,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html http://www.apache.org/lice
 	
 }
 
-/* for fun */
+/* por diversión */
 * {
   -webkit-transition: all 0.2s ease;
   -moz-transition:    all 0.2s ease;
@@ -52,18 +52,16 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html http://www.apache.org/lice
   -o-transition:      all 0.2s ease;
 }
 
-/* layout */
+/* disposición */
 
 body{
 	padding-top: 0;
 }
 
 /* Admin Top Navigation fixes */
-
 body.admin-bar .navbar-fixed-top{ 
 	top: 28px; 
 }
-
 .nav-container{
 	padding-left: 0;
 	padding-right: 0;
@@ -112,7 +110,7 @@ input, textarea, select, .uneditable-input {
 	margin-left: 10px;
 }
 
-/* post styling */
+/* diseño de la entrada */
 
 #main p.meta{
 	font-style: italic;
@@ -219,7 +217,7 @@ video {
 	margin-bottom: 18px;
 }
 
-/* page styling */
+/* diseño de la página */
 
 .page-template-page-homepage-php #main article{
 	border-bottom: none;
@@ -234,7 +232,7 @@ video {
 	font-size: 3em;
 }
 
-/* comments */
+/* comentarios */
 
 
 
@@ -352,9 +350,9 @@ ol.commentlist #respond{
 	padding: 5px 10px;
 }
 
-/* specific post-type styles */
+/* estilos específicos del tipo de entrada */
 
-/* image attachment */
+/* adjuntar imágenes */
 
 .attachment #main .post_content img{
 	max-width: 100%;
@@ -414,7 +412,7 @@ li.previous a:hover:before{
 }
 
 
-/* widget styles */
+/* estilos de los widgets */
 
 .widget{
 	margin-bottom: 18px;
@@ -429,12 +427,12 @@ li.previous a:hover:before{
 	line-height: 160%;
 }
 
-/* for some reason the bs version currently available for download doesn't have this style */
+/* por alguna razón la versión actual de bs disponible para descarga no tiene este estilo */
 .label{
 	text-transform: uppercase;
 }
 
-/* override standard link hover for the tag cloud widget */
+/* sobrescribe el enlace hover estándar para el widget nube de etiquetas */
 #tag-cloud a:hover,
 .tags a:hover{
 	color: #ffffff;
@@ -446,7 +444,7 @@ li.previous a:hover:before{
 	text-transform: uppercase;
 }
 
-/* change default form padding for search */
+/* cambia el padding predeterminado del formulario de búsqueda */
 
 .widget_search form{
 	padding-left: 0;
@@ -456,7 +454,7 @@ li.previous a:hover:before{
 	width: 121px;
 }
 
-/* calendar widget */
+/* widget calendario */
 
 #calendar_wrap{
 	border: 1px solid #ddd;
@@ -555,7 +553,7 @@ blockquote.pull-left{
 		font-size: 60px;
 	}
 	
-	/* hide edit comment button and show on hover on desktop version */
+	/* esconde el botón editar comentario y lo muestra al paso del ratón en la versión de escritorio */
 	.edit-comment{
 		display: none;
 	}

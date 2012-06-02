@@ -14,31 +14,31 @@
 							
 							<div class="page-header"><h1 class="single-title" itemprop="headline"><?php the_title(); ?></h1></div>
 							
-							<p class="meta"><?php _e("Posted", "bonestheme"); ?> <time datetime="<?php echo the_time('Y-m-j'); ?>" pubdate><?php the_date(); ?></time> <?php _e("by", "bonestheme"); ?> <?php the_author_posts_link(); ?> <span class="amp">&</span> <?php _e("filed under", "bonestheme"); ?> <?php the_category(', '); ?>.</p>
+							<p class="meta"><?php _e("Publicado", "bonestheme"); ?> <time datetime="<?php echo the_time('F-j-Y'); ?>" pubdate><?php the_date(); ?></time> <?php _e("por", "bonestheme"); ?> <?php the_author_posts_link(); ?> <span class="amp">&</span> <?php _e("archivado en", "bonestheme"); ?> <?php the_category(', '); ?>.</p>
 						
-						</header> <!-- end article header -->
+						</header> <!-- fin de la cabecera del artículo -->
 					
 						<section class="post_content clearfix" itemprop="articleBody">
 							<?php the_content(); ?>
 							
 							<?php wp_link_pages(); ?>
 					
-						</section> <!-- end article section -->
+						</section> <!-- fin de la sección del artículo -->
 						
 						<footer>
 			
-							<?php the_tags('<p class="tags"><span class="tags-title">' . __("Tags","bonestheme") . ':</span> ', ' ', '</p>'); ?>
+							<?php the_tags('<p class="tags"><span class="tags-title">' . __("Etiquetas","bonestheme") . ':</span> ', ' ', '</p>'); ?>
 							
 							<?php 
-							// only show edit button if user has permission to edit posts
+							// mostrar el botón de editar solo si el usuario posee permisos para editar entradas
 							if( $user_level > 0 ) { 
 							?>
-							<a href="<?php echo get_edit_post_link(); ?>" class="btn btn-success edit-post"><i class="icon-pencil icon-white"></i> <?php _e("Edit post","bonestheme"); ?></a>
+							<a href="<?php echo get_edit_post_link(); ?>" class="btn btn-success edit-post"><i class="icon-pencil icon-white"></i> <?php _e("Editar entrada","bonestheme"); ?></a>
 							<?php } ?>
 							
-						</footer> <!-- end article footer -->
+						</footer> <!-- fin del pie del artículo -->
 					
-					</article> <!-- end article -->
+					</article> <!-- fin del artículo -->
 					
 					<?php comments_template('',true); ?>
 					
@@ -48,10 +48,10 @@
 					
 					<article id="post-not-found">
 					    <header>
-					    	<h1><?php _e("Not Found", "bonestheme"); ?></h1>
+					    	<h1><?php _e("No se ha encontrado", "bonestheme"); ?></h1>
 					    </header>
 					    <section class="post_content">
-					    	<p><?php _e("Sorry, but the requested resource was not found on this site.", "bonestheme"); ?></p>
+					    	<p><?php _e("Lo sentimos, pero el recurso solicitado no se ha encontrado en este sitio.", "bonestheme"); ?></p>
 					    </section>
 					    <footer>
 					    </footer>
@@ -59,10 +59,10 @@
 					
 					<?php endif; ?>
 			
-				</div> <!-- end #main -->
+				</div> <!-- fin de #main -->
     
 				<?php get_sidebar(); // sidebar 1 ?>
     
-			</div> <!-- end #content -->
+			</div> <!-- fin de #content -->
 
 <?php get_footer(); ?>

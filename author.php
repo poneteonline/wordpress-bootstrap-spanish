@@ -5,9 +5,9 @@
 				<div id="main" class="span8 clearfix" role="main">
 				
 					<div class="page-header"><h1 class="archive_title h2">
-						<span><?php _e("Posts By:", "bonestheme"); ?></span> 
+						<span><?php _e("Entradas de:", "bonestheme"); ?></span> 
 						<?php 
-							// If google profile field is filled out on author profile, link the author's page to their google+ profile page
+							// si el campo de perfil de google esta rellenado en el perfil del autor, enlaza la página del autor a su perfil en google+
 							$curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
 							$google_profile = get_the_author_meta( 'google_profile', $curauth->ID );
 							if ( $google_profile ) {
@@ -28,9 +28,9 @@
 							
 							<h3 class="h2"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
 							
-							<p class="meta"><?php _e("Posted", "bonestheme"); ?> <time datetime="<?php echo the_time('Y-m-j'); ?>" pubdate><?php the_date(); ?></time> <?php _e("by", "bonestheme"); ?> <?php the_author_posts_link(); ?> <span class="amp">&</span> <?php _e("filed under", "bonestheme"); ?> <?php the_category(', '); ?>.</p>
+							<p class="meta"><?php _e("Publicado", "bonestheme"); ?> <time datetime="<?php echo the_time('F-j-Y'); ?>" pubdate><?php the_date(); ?></time> <?php _e("por", "bonestheme"); ?> <?php the_author_posts_link(); ?> <span class="amp">&</span> <?php _e("archivado en", "bonestheme"); ?> <?php the_category(', '); ?>.</p>
 						
-						</header> <!-- end article header -->
+						</header> <!-- fin de la cabecera del artículo -->
 					
 						<section class="post_content">
 						
@@ -38,25 +38,25 @@
 						
 							<?php the_excerpt(); ?>
 					
-						</section> <!-- end article section -->
+						</section> <!-- fin de la sección del artículo -->
 						
 						<footer>
 							
-						</footer> <!-- end article footer -->
+						</footer> <!-- fin del pie del artículo -->
 					
-					</article> <!-- end article -->
+					</article> <!-- fin del artículo -->
 					
 					<?php endwhile; ?>	
 					
-					<?php if (function_exists('page_navi')) { // if expirimental feature is active ?>
+					<?php if (function_exists('page_navi')) { // si la característica experimental esta activa ?>
 						
-						<?php page_navi(); // use the page navi function ?>
+						<?php page_navi(); // usa la función de navegación de página ?>
 
-					<?php } else { // if it is disabled, display regular wp prev & next links ?>
+					<?php } else { // si esta esta deshabitada, muestra los enlaces predeterminados anterior & siguiente de wp ?>
 						<nav class="wp-prev-next">
 							<ul class="clearfix">
-								<li class="prev-link"><?php next_posts_link(_e('&laquo; Older Entries', "bonestheme")) ?></li>
-								<li class="next-link"><?php previous_posts_link(_e('Newer Entries &raquo;', "bonestheme")) ?></li>
+								<li class="prev-link"><?php next_posts_link(_e('&laquo; Entradas antiguas', "bonestheme")) ?></li>
+								<li class="next-link"><?php previous_posts_link(_e('Entradas recientes &raquo;', "bonestheme")) ?></li>
 							</ul>
 						</nav>
 					<?php } ?>
@@ -66,10 +66,10 @@
 					
 					<article id="post-not-found">
 					    <header>
-					    	<h1><?php _e("No Posts Yet", "bonestheme"); ?></h1>
+					    	<h1><?php _e("No existen entradas aún", "bonestheme"); ?></h1>
 					    </header>
 					    <section class="post_content">
-					    	<p><?php _e("Sorry, What you were looking for is not here.", "bonestheme"); ?></p>
+					    	<p><?php _e("Lo sentimos, lo que estás buscando no se encuentra aquí.", "bonestheme"); ?></p>
 					    </section>
 					    <footer>
 					    </footer>
@@ -77,10 +77,10 @@
 					
 					<?php endif; ?>
 			
-				</div> <!-- end #main -->
+				</div> <!-- fin de #mainn -->
     
 				<?php get_sidebar(); // sidebar 1 ?>
     
-			</div> <!-- end #content -->
+			</div> <!-- fin de #content -->
 
 <?php get_footer(); ?>

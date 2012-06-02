@@ -34,20 +34,20 @@ Template Name: Homepage
 								
 							</div>
 							
-							<?php get_sidebar('sidebar2'); // sidebar 2 ?>
+							<?php get_sidebar('sidebar2'); // barra lateral 2 ?>
 													
-						</section> <!-- end article header -->
+						</section> <!-- fin de la cabecera del artículo -->
 						
 						<footer>
 			
-							<p class="clearfix"><?php the_tags('<span class="tags">' . __("Tags","bonestheme") . ': ', ', ', '</span>'); ?></p>
+							<p class="clearfix"><?php the_tags('<span class="tags">' . __("Etiquetas","bonestheme") . ': ', ', ', '</span>'); ?></p>
 							
-						</footer> <!-- end article footer -->
+						</footer> <!-- fin del pie del artículo -->
 					
-					</article> <!-- end article -->
+					</article> <!-- fin del artículo -->
 					
 					<?php 
-						// No comments on homepage
+						// Sin comentarios en la página principal
 						//comments_template();
 					?>
 					
@@ -57,10 +57,10 @@ Template Name: Homepage
 					
 					<article id="post-not-found">
 					    <header>
-					    	<h1><?php _e("Not Found", "bonestheme"); ?></h1>
+					    	<h1><?php _e("No se ha encontrado", "bonestheme"); ?></h1>
 					    </header>
 					    <section class="post_content">
-					    	<p><?php _e("Sorry, but the requested resource was not found on this site.", "bonestheme"); ?></p>
+					    	<p><?php _e("Lo sentimos, pero el recurso solicitado no se ha encontrado en este sitio.", "bonestheme"); ?></p>
 					    </section>
 					    <footer>
 					    </footer>
@@ -68,10 +68,10 @@ Template Name: Homepage
 					
 					<?php endif; ?>
 			
-				</div> <!-- end #main -->
+				</div> <!-- fin de #main -->
     
 				<?php //get_sidebar(); // sidebar 1 ?>
     
-			</div> <!-- end #content -->
+			</div> <!-- fin de #content -->
 
 <?php get_footer(); ?>

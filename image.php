@@ -12,13 +12,13 @@
 							
 							<div class="page-header"><h1 class="single-title" itemprop="headline"><a href="<?php echo get_permalink($post->post_parent); ?>" rev="attachment"><?php echo get_the_title($post->post_parent); ?></a> &raquo; <?php the_title(); ?></h1></div>
 							
-							<p class="meta"><?php _e("Posted", "bonestheme"); ?> <time datetime="<?php echo the_time('Y-m-j'); ?>" pubdate><?php the_date(); ?></time> <?php _e("by", "bonestheme"); ?> <?php the_author_posts_link(); ?>.</p>
+							<p class="meta"><?php _e("Publicado", "bonestheme"); ?> <time datetime="<?php echo the_time('F-j-Y'); ?>" pubdate><?php the_date(); ?></time> <?php _e("por", "bonestheme"); ?> <?php the_author_posts_link(); ?>.</p>
 						
-						</header> <!-- end article header -->
+						</header> <!-- fin de la cabecera del artículo -->
 					
 						<section class="post_content clearfix" itemprop="articleBody">
 							
-							<!-- To display current image in the photo gallery -->
+							<!-- Para mostrar la imagen actual en la galería fotográfica -->
 							<div class="attachment-img">
 							      <a href="<?php echo wp_get_attachment_url($post->ID); ?>">
 							      							      
@@ -32,21 +32,21 @@
 							      </a>
 							</div>
 							
-							<!-- To display thumbnail of previous and next image in the photo gallery -->
+							<!-- Para mostrar la miniatura de la anterior y próxima imagen en la galería fotográfica -->
 							<ul id="gallery-nav" class="clearfix">
 								<li class="next pull-left"><?php next_image_link() ?></li>
 								<li class="previous pull-right"><?php previous_image_link() ?></li>
 							</ul>
 							
-						</section> <!-- end article section -->
+						</section> <!-- fin de la sección del artículo -->
 						
 						<footer>
 			
-							<?php the_tags('<p class="tags"><span class="tags-title">' . __("Tags","bonestheme") . ':</span> ', ' ', '</p>'); ?>
+							<?php the_tags('<p class="tags"><span class="tags-title">' . __("Etiquetas","bonestheme") . ':</span> ', ' ', '</p>'); ?>
 							
-						</footer> <!-- end article footer -->
+						</footer> <!-- fin del pie del artículo -->
 					
-					</article> <!-- end article -->
+					</article> <!-- fin del artículo -->
 					
 					<?php comments_template(); ?>
 					
@@ -56,10 +56,10 @@
 					
 					<article id="post-not-found">
 					    <header>
-					    	<h1><?php _e("Not Found", "bonestheme"); ?></h1>
+					    	<h1><?php _e("No se ha encontrado", "bonestheme"); ?></h1>
 					    </header>
 					    <section class="post_content">
-					    	<p><?php _e("Sorry, but the requested resource was not found on this site.", "bonestheme"); ?></p>
+					    	<p><?php _e("Lo sentimos, pero el recurso solicitado no se ha encontrado en este sitio.", "bonestheme"); ?></p>
 					    </section>
 					    <footer>
 					    </footer>
@@ -67,7 +67,7 @@
 					
 					<?php endif; ?>
 			
-				</div> <!-- end #main -->
+				</div> <!-- fin de #main -->
 				
 				<div id="sidebar1" class="span4 fluid-sidebar sidebar" role="complementary">
 				
@@ -75,15 +75,15 @@
 					<p class="alert alert-block success"><?php echo get_the_excerpt(); ?></p>
 					<?php } ?>
 								
-					<!-- Using WordPress functions to retrieve the extracted EXIF information from database -->
+					<!-- Usando las funciones de WordPress para obtener la información EXIF extraída desde la base de datos -->
 					<div class="well">
 					
-						<h3><?php _e("Image metadata","bonestheme"); ?></h3>
+						<h3><?php _e("Meta-información de la imagen","bonestheme"); ?></h3>
 					
 					   <?php
 					      $imgmeta = wp_get_attachment_metadata( $id );
 					
-					// Convert the shutter speed retrieve from database to fraction
+					// Convierte la velocidad del obturador obtenida desde la base de datos en una fracción
 					      if ((1 / $imgmeta['image_meta']['shutter_speed']) > 1)
 					      {
 					         if ((number_format((1 / $imgmeta['image_meta']['shutter_speed']), 1)) == 1.3
@@ -100,7 +100,7 @@
 					         $pshutter = $imgmeta['image_meta']['shutter_speed'] . " seconds";
 					       }
 					
-					// Start to display EXIF and IPTC data of digital photograph
+					// Se inicia para mostrar la información EXIF e IPTC de la fotografía digital
 					       echo __("Date Taken","bonestheme") . ": " . date("d-M-Y H:i:s", $imgmeta['image_meta']['created_timestamp'])."<br />";
 					       echo __("Copyright","bonestheme") . ": " . $imgmeta['image_meta']['copyright']."<br />";
 					       echo __("Credit","bonestheme") . ": " . $imgmeta['image_meta']['credit']."<br />";
@@ -116,6 +116,6 @@
 					
 				</div>
     
-			</div> <!-- end #content -->
+			</div> <!-- fin de #content -->
 
 <?php get_footer(); ?>

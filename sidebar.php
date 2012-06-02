@@ -6,11 +6,11 @@
 
 					<?php else : ?>
 
-						<!-- This content shows up if there are no widgets defined in the backend. -->
+						<!-- Este contenido se muestra en caso de que no hayan widgets definidos en el backend. -->
 						
 						<div class="alert-message">
 						
-							<p><?php _e("Please activate some Widgets","bonestheme"); ?>.</p>
+							<p><?php _e("Por favor active algunos Widgets","bonestheme"); ?>.</p>
 						
 						</div>
 

@@ -12,20 +12,20 @@
 		          </div>
 					
 					<nav class="clearfix">
-						<?php bones_footer_links(); // Adjust using Menus in Wordpress Admin ?>
+						<?php bones_footer_links(); // Ajustar usando la opción Menús en el Administrador de Wordpress ?>
 					</nav>
 					
-					<p class="pull-right"><a href="http://320press.com" id="credit320" title="By the dudes of 320press">320press</a></p>
+					<p class="pull-right"><a href="http://320press.com" id="credit320" title="Por los chicos de 320press">320press</a></p>
 			
 					<p class="attribution">&copy; <?php bloginfo('name'); ?></p>
 				
-				</div> <!-- end #inner-footer -->
+				</div> <!-- fin #inner-footer -->
 				
-			</footer> <!-- end footer -->
+			</footer> <!-- fin pie de página -->
 		
-		</div> <!-- end #container -->
+		</div> <!-- fin #container -->
 		
-		<!-- scripts are now optimized via Modernizr.load -->	
+		<!-- los scripts están ahora optimizados usando Modernizr.load -->	
 		<script src="<?php echo get_template_directory_uri(); ?>/library/js/scripts.js"></script>
 		
 		<!--[if lt IE 7 ]>
@@ -33,7 +33,7 @@
   			<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 		<![endif]-->
 		
-		<?php wp_footer(); // js scripts are inserted using this function ?>
+		<?php wp_footer(); // los scripts js están insertados usando esta función ?>
 
 	</body>
 

@@ -8,24 +8,24 @@
 						
 						<header>
 							
-							<div class="page-header"><h1>Epic 404 - Article Not Found</h1></div>
+							<div class="page-header"><h1>404 épico - El artículo no fue encontrado</h1></div>
 						
-						</header> <!-- end article header -->
+						</header> <!-- fin de la cabecera del artículo -->
 					
 						<section class="post_content">
 							
-							<p>The article you were looking for was not found, but maybe try looking again!</p>
+							<p>El artículo que estás buscando no fue encontrado, pero puedes buscar de nuevo!</p>
 					
-						</section> <!-- end article section -->
+						</section> <!-- fin de la sección del artículo -->
 						
 						<footer>
 							
-						</footer> <!-- end article footer -->
+						</footer> <!-- fin del pie del artículo -->
 					
-					</article> <!-- end article -->
+					</article> <!-- fin del artículo -->
 			
-				</div> <!-- end #main -->
+				</div> <!-- fin de #main -->
     
-			</div> <!-- end #content -->
+			</div> <!-- fin de #content -->
 
 <?php get_footer(); ?>
