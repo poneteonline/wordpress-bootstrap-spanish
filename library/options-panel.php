@@ -3,10 +3,10 @@
 if ( !function_exists( 'optionsframework_init' ) ) {
 
 /*-----------------------------------------------------------------------------------*/
-/* Options Framework Theme
+/* Tema de opciones del marco de desarrollo
 /*-----------------------------------------------------------------------------------*/
 
-/* Set the file path based on whether the Options Framework Theme is a parent theme or child theme */
+/* Establece la ruta del archivo basado en si el Tema de opciones del marco de desarrollo es un tema principal o un tema hijo */
 
 if ( STYLESHEETPATH == TEMPLATEPATH ) {
 	define('OPTIONS_FRAMEWORK_URL', TEMPLATEPATH . '/admin/');
@@ -21,8 +21,8 @@ require_once (get_template_directory() . '/admin/options-framework.php');
 }
 
 /* 
- * This is an example of how to add custom scripts to the options panel.
- * This one shows/hides the an option when a checkbox is clicked.
+ * Esto es un ejemplo de como añadir scripts personalizados al panel de opciones.
+ * Esto muestra/oculta la opción an cuando una casilla de verificación es marcada.
  */
 
 add_action('optionsframework_custom_scripts', 'optionsframework_custom_scripts');
@@ -55,7 +55,7 @@ jQuery(document).ready(function() {
 }
 
 /* 
- * Turns off the default options panel from Twenty Eleven
+ * Apaga el panel de opciones predeterminado de Twenty Eleven
  */
  
 add_action('after_setup_theme','remove_twentyeleven_options', 100);

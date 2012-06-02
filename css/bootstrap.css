@@ -617,10 +617,10 @@ input[type="button"], input[type="reset"], input[type="submit"] {
 }
 select, input[type="file"] {
   height: 28px;
-  /* In IE7, the height of the select element cannot be changed by height, only font-size */
+  /* En IE7, la altura del elemento select no puede ser cambiada por height, solo con font-size */
 
   *margin-top: 4px;
-  /* For IE7, add top margin to align select with labels */
+  /* Para IE7, añadir top margin para alinear select con las etiquetas */
 
   line-height: 28px;
 }

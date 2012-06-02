@@ -2,7 +2,7 @@
 /*
 Plugin Name: Options Framework
 Plugin URI: http://www.wptheming.com
-Description: A framework for building theme options.
+Description: Un marco de desarrollo para construir las opciones de un tema.
 Version: 0.8
 Author: Devin Price
 Author URI: http://www.wptheming.com
@@ -10,46 +10,46 @@ License: GPLv2
 */
 
 /*
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
+Este programa es software libre; puedes distribuirlo y/o modificarlo
+bajo los términos de la GNU General Public License como esta
+publicada por la Fundación para el Software Libre; cualquier de las
+versiones 2 de la licencia, o (tu decisión) cualquier versión posterior.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+Este programa es distribuido con la esperanza de que sea útil,
+pero SIN NINGUNA GARANTIA; sin incluir siquiera la garantía de
+COMERCIALIZACION o IDONEIDAD PARA UN PROPOSITO PARTICULAR.
+Dirígete a la GNU General Public License para mas información.
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+Tu debiste haber recibido una copia de la GNU General Public License
+con este programa; si no, escribe a la Free Software Foundation, Inc.
+51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-/* Basic plugin definitions */
+/* Definiciones básicas de plugins */
 
 define('OPTIONS_FRAMEWORK_VERSION', '0.9');
 
-/* Make sure we don't expose any info if called directly */
+/* Se asegura de no exponer ninguna información si es llamada directamente */
 
 if ( !function_exists( 'add_action' ) ) {
-	echo "Hi there!  I'm just a little plugin, don't mind me.";
+	echo "Hola! Yo soy solo un pequeño plugin, no te preocupes por mi.";
 	exit;
 }
 
-/* If the user can't edit theme options, no use running this plugin */
+/* Si el usuario no puede editar las opciones del tema, no hay necesidad de correr este plugin */
 
 add_action('init', 'optionsframework_rolescheck' );
 
 function optionsframework_rolescheck () {
 	if ( current_user_can( 'edit_theme_options' ) ) {
-		// If the user can edit theme options, let the fun begin!
+		// Si el usuario puede editar las opciones del tema, dejemos que la diversión comience!
 		add_action( 'admin_menu', 'optionsframework_add_page');
 		add_action( 'admin_init', 'optionsframework_init' );
 		add_action( 'admin_init', 'optionsframework_mlu_init' );
 	}
 }
 
-/* Loads the file for option sanitization */
+/* Carga el archivo para la limpieza de opciones */
 
 add_action('init', 'optionsframework_load_sanitization' );
 
@@ -58,22 +58,22 @@ function optionsframework_load_sanitization() {
 }
 
 /* 
- * Creates the settings in the database by looping through the array
- * we supplied in options.php.  This is a neat way to do it since
- * we won't have to save settings for headers, descriptions, or arguments.
- *
- * Read more about the Settings API in the WordPress codex:
+ * Crea los ajustes en la base de datos saltando a través de la matriz
+ * que proveemos en options.php. Esta es una excelente forma de hacerlo ya que
+ * no tenemos que guardar los ajustes para las cabeceras, descripciones o argumentos.
+ * 
+ * Conoce más acerca de la API Settings en el WordPress codex:
  * http://codex.wordpress.org/Settings_API
  *
  */
 
 function optionsframework_init() {
 
-	// Include the required files
+	// Incluye los archivos necesarios
 	require_once dirname( __FILE__ ) . '/options-interface.php';
 	require_once dirname( __FILE__ ) . '/options-medialibrary-uploader.php';
 	
-	// Loads the options array from the theme
+	// Carga la matriz de opciones desde el tema
 	if ( $optionsfile = locate_template( array('options.php') ) ) {
 		require_once($optionsfile);
 	}
@@ -83,10 +83,10 @@ function optionsframework_init() {
 	
 	$optionsframework_settings = get_option('optionsframework' );
 	
-	// Updates the unique option id in the database if it has changed
+	// Actualiza el id único de la opción en la base de datos si esta ha cambiado
 	optionsframework_option_name();
 	
-	// Gets the unique id, returning a default if it isn't defined
+	// Obtiene el id único, entregando el predeterminado si este no esta definido
 	if ( isset($optionsframework_settings['id']) ) {
 		$option_name = $optionsframework_settings['id'];
 	}
@@ -94,20 +94,20 @@ function optionsframework_init() {
 		$option_name = 'optionsframework';
 	}
 	
-	// If the option has no saved data, load the defaults
+	// Si la opción no tiene información guardada, carga la predeterminada
 	if ( ! get_option($option_name) ) {
 		optionsframework_setdefaults();
 	}
 	
-	// Registers the settings fields and callback
+	// Registra los campos de configuración y de devolución de llamada
 	register_setting( 'optionsframework', $option_name, 'optionsframework_validate' );
 }
 
 /* 
- * Adds default options to the database if they aren't already present.
- * May update this later to load only on plugin activation, or theme
- * activation since most people won't be editing the options.php
- * on a regular basis.
+ * Añade opciones predeterminadas a la base de datos si estas no se encuentran ya presentes.
+ * Se puede luego actualizar esto para que se cargue por la activación de un plugin o
+ * activación del tema, ya que la mayoría de personas no modificaran el archivo options.php
+ * de forma regular.
  *
  * http://codex.wordpress.org/Function_Reference/add_option
  *
@@ -117,14 +117,14 @@ function optionsframework_setdefaults() {
 	
 	$optionsframework_settings = get_option('optionsframework');
 
-	// Gets the unique option id
+	// Obtiene el id único de opciones
 	$option_name = $optionsframework_settings['id'];
 	
 	/* 
-	 * Each theme will hopefully have a unique id, and all of its options saved
-	 * as a separate option set.  We need to track all of these option sets so
-	 * it can be easily deleted if someone wishes to remove the plugin and
-	 * its associated data.  No need to clutter the database.  
+	 * Se espera que cada tema tenga un id único y todas sus opciones guardadas como 
+	 * un grupo separado de opciones. Necesitamos rastrear todos estos grupos de opciones
+	 * para que puedan ser fácilmente eliminados si alguien desea eliminar el plugin y
+	 * su información asociada. No hay necesidad de desordenar la base de datos.  
 	 *
 	 */
 	
@@ -141,46 +141,46 @@ function optionsframework_setdefaults() {
 		update_option('optionsframework', $optionsframework_settings);
 	}
 	
-	// Gets the default options data from the array in options.php
+	// Obtiene la información de las opciones predeterminadas desde la matriz en el archivo options.php
 	$options = optionsframework_options();
 	
-	// If the options haven't been added to the database yet, they are added now
+	// Si las opciones no han sido incluidas en la base de datos aún, ellas serán incluidas ahora
 	$values = of_get_default_values();
 	
 	if ( isset($values) ) {
-		add_option( $option_name, $values ); // Add option with default settings
+		add_option( $option_name, $values ); // Añade la opción con los ajustes predeterminados
 	}
 }
 
-/* Add a subpage called "Theme Options" to the appearance menu. */
+/* Añade una sub-página llamada "Opciones del tema" al menú apariencia. */
 
 if ( !function_exists( 'optionsframework_add_page' ) ) {
 function optionsframework_add_page() {
 
-	$of_page = add_theme_page('Theme Options', 'Theme Options', 'edit_theme_options', 'options-framework','optionsframework_page');
+	$of_page = add_theme_page('Opciones del tema', 'Opciones del tema', 'edit_theme_options', 'options-framework','optionsframework_page');
 	
-	// Adds actions to hook in the required css and javascript
+	// Agrega acciones de enganche en el css y javascript requeridos
 	add_action("admin_print_styles-$of_page",'optionsframework_load_styles');
 	add_action("admin_print_scripts-$of_page", 'optionsframework_load_scripts');
 	
 }
 }
 
-/* Loads the CSS */
+/* Carga las CSS */
 
 function optionsframework_load_styles() {
 	wp_enqueue_style('admin-style', OPTIONS_FRAMEWORK_DIRECTORY.'css/admin-style.css');
 	wp_enqueue_style('color-picker', OPTIONS_FRAMEWORK_DIRECTORY.'css/colorpicker.css');
 }	
 
-/* Loads the javascript */
+/* Carga el javascript */
 
 function optionsframework_load_scripts() {
 
-	// Inline scripts from options-interface.php
+	// Scripts en linea del archivo options-interface.php
 	add_action('admin_head', 'of_admin_head');
 	
-	// Enqueued scripts
+	// Scripts en cola
 	wp_enqueue_script('jquery-ui-core');
 	wp_enqueue_script('color-picker', OPTIONS_FRAMEWORK_DIRECTORY.'js/colorpicker.js', array('jquery'));
 	wp_enqueue_script('options-custom', OPTIONS_FRAMEWORK_DIRECTORY.'js/options-custom.js', array('jquery'));
@@ -188,19 +188,19 @@ function optionsframework_load_scripts() {
 
 function of_admin_head() {
 
-	// Hook to add custom scripts
+	// Gancho para agregar scripts personalizados
 	do_action( 'optionsframework_custom_scripts' );
 }
 
 /* 
- * Builds out the options panel.
- *
- * If we were using the Settings API as it was likely intended we would use
- * do_settings_sections here.  But as we don't want the settings wrapped in a table,
- * we'll call our own custom optionsframework_fields.  See options-interface.php
- * for specifics on how each individual field is generated.
- *
- * Nonces are provided using the settings_fields()
+ * Construye el panel de opciones.
+ * 
+ * Si estuviéramos usando la API Settings como esta diseñada usuarios aquí
+ * do_settings_sections. Pero como no queremos los ajustes envueltos en una tabla,
+ * llamamos nuestro propio optionsframework_fields. Dirigete a options-interface.php
+ * para conocer los detalles de como cada campo individual es generado.
+ * 
+ * Esta previsto que Nonces use el campo settings_fields()
  *
  */
 
@@ -223,11 +223,11 @@ function optionsframework_page() {
 		<form action="options.php" method="post">
 		<?php settings_fields('optionsframework'); ?>
 
-		<?php echo $return[0]; /* Settings */ ?>
+		<?php echo $return[0]; /* Ajustes */ ?>
         
         <div id="optionsframework-submit">
-			<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options' ); ?>" />
-            <input type="submit" class="reset-button button-secondary" name="reset" value="<?php esc_attr_e( 'Restore Defaults' ); ?>" onclick="return confirm( '<?php print esc_js( __( 'Click OK to reset. Any theme settings will be lost!','optionsframework' ) ); ?>' );" />
+			<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Guardar ajustes' ); ?>" />
+            <input type="submit" class="reset-button button-secondary" name="reset" value="<?php esc_attr_e( 'Restaurar opciones predeterminadas' ); ?>" onclick="return confirm( '<?php print esc_js( __( 'Haz click en "OK" para restaurar los cambios. Cualquier configuración anterior se perderá!','optionsframework' ) ); ?>' );" />
             <div class="clear"></div>
 		</div>
 	</form>
@@ -241,10 +241,10 @@ function optionsframework_page() {
 }
 
 /** 
- * Validate Options.
+ * Validar opciones.
  *
- * This runs after the submit/reset button has been clicked and
- * validates the inputs.
+ * Esto corre después de que el botón enviar/restaurar ha sido presionado y
+ * valida los ingresos.
  *
  * @uses $_POST['reset']
  * @uses $_POST['update']
@@ -252,20 +252,20 @@ function optionsframework_page() {
 function optionsframework_validate( $input ) {
 
 	/*
-	 * Restore Defaults.
+	 * Restaurar opciones predeterminadas.
 	 *
-	 * In the event that the user clicked the "Restore Defaults"
-	 * button, the options defined in the theme's options.php
-	 * file will be added to the option for the active theme.
+	 * En el caso de que el usuario presione el botón "Restaurar
+	 * opciones predeterminadas", las opciones definidas en el archivo
+	 * options.php del tema serán usadas para la opción en el tema activo.
 	 */
 	 
 	if ( isset( $_POST['reset'] ) ) {
-		add_settings_error( 'options-framework', 'restore_defaults', __( 'Default options restored.', 'optionsframework' ), 'updated fade' );
+		add_settings_error( 'options-framework', 'restore_defaults', __( 'Opciones predeterminadas restauradas.', 'optionsframework' ), 'updated fade' );
 		return of_get_default_values();
 	}
 
 	/*
-	 * Udpdate Settings.
+	 * Actualizar ajustes.
 	 */
 	 
 	if ( isset( $_POST['update'] ) ) {
@@ -283,43 +283,43 @@ function optionsframework_validate( $input ) {
 
 			$id = preg_replace( '/[^a-zA-Z0-9._\-]/', '', strtolower( $option['id'] ) );
 
-			// Set checkbox to false if it wasn't sent in the $_POST
+			// Establece la casilla de verificación a falso si no se ha enviado en el $_POST
 			if ( 'checkbox' == $option['type'] && ! isset( $input[$id] ) ) {
 				$input[$id] = '0';
 			}
 
-			// Set each item in the multicheck to false if it wasn't sent in the $_POST
+			// Establece cada opción de la lista de selección múltiple como falso si no se ha enviado en el $_POST
 			if ( 'multicheck' == $option['type'] && ! isset( $input[$id] ) ) {
 				foreach ( $option['options'] as $key => $value ) {
 					$input[$id][$key] = '0';
 				}
 			}
 
-			// For a value to be submitted to database it must pass through a sanitization filter
+			// Para que un valor sea enviado a la base de datos debe primero pasar a través de un filtro de desinfección
 			if ( has_filter( 'of_sanitize_' . $option['type'] ) ) {
 				$clean[$id] = apply_filters( 'of_sanitize_' . $option['type'], $input[$id], $option );
 			}
 		}
 
-		add_settings_error( 'options-framework', 'save_options', __( 'Options saved.', 'optionsframework' ), 'updated fade' );
+		add_settings_error( 'options-framework', 'save_options', __( 'Opciones guardadas.', 'optionsframework' ), 'updated fade' );
 		return $clean;
 	}
 
 	/*
-	 * Request Not Recognized.
+	 * No se reconoce la solicitud.
 	 */
 	
 	return of_get_default_values();
 }
 
 /**
- * Format Configuration Array.
+ * Configuración de formato de la matriz.
  *
- * Get an array of all default values as set in
- * options.php. The 'id','std' and 'type' keys need
- * to be defined in the configuration array. In the
- * event that these keys are not present the option
- * will not be included in this function's output.
+ * Obtiene una matriz de todos los valores predeterminados como están establecidos en el
+ * options.php. Las claves 'id', 'std' y 'type' necesitan ser
+ * definidas en la matriz de configuración. En caso de
+ * que estas claves no se encuentren presentes la opción
+ * no será incluida en la salida de esta función.
  *
  * @return    array     Rey-keyed options configuration array.
  *
@@ -347,7 +347,7 @@ function of_get_default_values() {
 }
 
 /**
- * Add Theme Options menu item to Admin Bar.
+ * Agrega el menú Opciones del tema a la barra de administración.
  */
  
 add_action( 'wp_before_admin_bar_render', 'optionsframework_adminbar' );
@@ -359,7 +359,7 @@ function optionsframework_adminbar() {
 	$wp_admin_bar->add_menu( array(
 		'parent' => 'appearance',
 		'id' => 'of_theme_options',
-		'title' => __( 'Theme Options','optionsframework' ),
+		'title' => __( 'Opciones del tema','optionsframework' ),
 		'href' => admin_url( 'themes.php?page=options-framework' )
   ));
 }
@@ -367,11 +367,11 @@ function optionsframework_adminbar() {
 if ( ! function_exists( 'of_get_option' ) ) {
 
 	/**
-	 * Get Option.
+	 * Opción Get.
 	 *
-	 * Helper function to return the theme option value.
-	 * If no value has been saved, it returns $default.
-	 * Needed because options are saved as serialized strings.
+	 * Función de ayuda para obtener el valor de la opción del tema.
+	 * Si no se establece un valor, regresa $default.
+	 * Es necesario porque las opciones son guardadas como cadenas serializadas.
 	 */
 	 
 	function of_get_option( $name, $default = false ) {

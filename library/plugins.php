@@ -1,48 +1,48 @@
 <?php
 
 /*
-Bones Plugins & Extra Functionality
-Author: Eddie Machado
+Plugins y funcionalidades extras de Bones
+Autor: Eddie Machado
 URL: http://themble.com/bones/
 
-This file contains extra features not 100% ready to be included
-in the core. Feel free to edit anything here or even help us fix
-and optimize the code! 
+Este archivo contiene características extras no 100% estables pero listas para ser incluidas
+en el núcleo. Siéntete libre de editar cualquier parte e incluso ayudarnos a mejorar y
+optimiza el código!
 
-IF YOU WANT TO SUBMIT A FIX OR CORRECTION, JOIN US ON GITHUB:
+SI QUIERES ENVIAR UNA REPARACION O CORRECCION, UNETE A NOSOTROS EN GITHUB:
 https://github.com/eddiemachado/bones/issues
 
-IF YOU WANT TO DISABLE THIS FILE, REMOVE IT'S CALL IN THE FUNCTIONS.PHP FILE
+SI QUIERES DESHABILITAR ESTE ARCHIVO,  ELIMINA SU LLAMADO EN EL ARCHIVO FUNCTIONS.PHP
 
 */
 
 
 /* 
-Social Integration
-This is a collection of snippets I edited or reused from
-social plugins. No need to use a plugin when you can 
-replicate it in only a few lines I say, so here we go.
-For more info, or to add more open graph stuff, check
-out: http://yoast.com/facebook-open-graph-protocol/
+Integración social
+Esta es una colección de fragmentos que he editado o rehusado
+de los plugins sociales. No hay necesidad de usar un plugin cuando 
+puede replicarlo en unas pocas lineas, así que aquí vamos.
+Para mas información, o para mas cosas de open graph, verifica:
+http://yoast.com/facebook-open-graph-protocol/
 */
 
 	
-// adding the rel=me thanks to yoast	
+// añadiendo el rel=me gracias a yoast	
 function yoast_allow_rel() {
 	global $allowedtags;
 	$allowedtags['a']['rel'] = array ();
 }
 add_action( 'wp_loaded', 'yoast_allow_rel' );
 
-// adding facebook, twitter, & google+ links to the user profile
+// añadiendo enlaces para facebook, twitter y google+ al perfil del usuario
 function bones_add_user_fields( $contactmethods ) {
-	// Add Facebook
+	// Añadir Facebook
 	$contactmethods['user_fb'] = 'Facebook';
-	// Add Twitter
+	// Añadir Twitter
 	$contactmethods['user_tw'] = 'Twitter';
-	// Add Google+
-	$contactmethods['google_profile'] = 'Google Profile URL';
-	// Save 'Em
+	// Añadir Google+
+	$contactmethods['google_profile'] = 'URL del perfil de Google';
+	// Guardar 'Em
 	return $contactmethods;
 }
 add_filter('user_contactmethods','bones_add_user_fields',10,1);

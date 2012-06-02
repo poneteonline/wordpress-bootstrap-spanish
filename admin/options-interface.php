@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Generates the options fields that are used in the form.
+ * Genera los campos de opciones que son usados en este formulario.
  */
 
 function optionsframework_fields() {
@@ -9,11 +9,11 @@ function optionsframework_fields() {
 	global $allowedtags;
 	$optionsframework_settings = get_option('optionsframework');
 	
-	// Get the theme name so we can display it up top
+	// Obtiene el nombre del tema para que podamos mostrarlo en la parte superior
 	$themename = get_theme_data(STYLESHEETPATH . '/style.css');
 	$themename = $themename['Name'];
 
-	// Gets the unique option id
+	// Obtiene el id único de la opción
 	if (isset($optionsframework_settings['id'])) {
 		$option_name = $optionsframework_settings['id'];
 	}
@@ -35,10 +35,10 @@ function optionsframework_fields() {
 		$select_value = '';
 		$checked = '';
 		
-		// Wrap all options
+		// Envuelve todas las opciones
 		if ( ($value['type'] != "heading") && ($value['type'] != "info") ) {
 
-			// Keep all ids lowercase with no spaces
+			// Mantiene todos los id en minúsculas y sin espacios
 			//if ( isset( $value['id'] ) ){
 				$value['id'] = preg_replace('/[^a-zA-Z0-9._\-]/', '', strtolower($value['id']) );
 			//}
@@ -58,12 +58,12 @@ function optionsframework_fields() {
 			$output .= '<div class="option">' . "\n" . '<div class="controls">' . "\n";
 		 }
 		
-		// Set default value to $val
+		// Establece el valor predeterminado para $val
 		if ( isset( $value['std']) ) {
 			$val = $value['std'];
 		}
 		
-		// If the option is already saved, ovveride $val
+		// Si la opción ya se encuentra guardada, sobrescribe $val
 		if ( ($value['type'] != 'heading') && ($value['type'] != 'info')) {
 			if ( isset($settings[($value['id'])]) ) {
 					$val = $settings[($value['id'])];
@@ -74,7 +74,7 @@ function optionsframework_fields() {
 			}
 		}
 		
-		// If there is a description save it for labels
+		// Si existe una descripción guardada para las etiquetas
 		$explain_value = '';
 		if ( isset( $value['desc'] ) ) {
 			$explain_value = $value['desc'];
@@ -82,12 +82,12 @@ function optionsframework_fields() {
 		                                
 		switch ( $value['type'] ) {
 		
-		// Basic text input
+		// Inserción básica de texto
 		case 'text':
 			$output .= '<input id="' . esc_attr( $value['id'] ) . '" class="of-input" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" type="text" value="' . esc_attr( $val ) . '" />';
 		break;
 		
-		// Textarea
+		// Area de texto
 		case 'textarea':
 			$cols = '8';
 			$ta_value = '';
@@ -104,7 +104,7 @@ function optionsframework_fields() {
 			$output .= '<textarea id="' . esc_attr( $value['id'] ) . '" class="of-input" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" cols="'. esc_attr( $cols ) . '" rows="8">' . esc_textarea( $val ) . '</textarea>';
 		break;
 		
-		// Select Box
+		// Caja de selección
 		case ($value['type'] == 'select'):
 			$output .= '<select class="of-input" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" id="' . esc_attr( $value['id'] ) . '">';
 			
@@ -119,7 +119,7 @@ function optionsframework_fields() {
 		break;
 
 		
-		// Radio Box
+		// Caja de radio
 		case "radio":
 			$name = $option_name .'['. $value['id'] .']';
 			foreach ($value['options'] as $key => $option) {
@@ -128,7 +128,7 @@ function optionsframework_fields() {
 			}
 		break;
 		
-		// Image Selectors
+		// Selectores de imagen
 		case "images":
 			$name = $option_name .'['. $value['id'] .']';
 			foreach ( $value['options'] as $key => $option ) {
@@ -146,13 +146,13 @@ function optionsframework_fields() {
 			}
 		break;
 		
-		// Checkbox
+		// Casilla de verificación
 		case "checkbox":
 			$output .= '<input id="' . esc_attr( $value['id'] ) . '" class="checkbox of-input" type="checkbox" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" '. checked( $val, 1, false) .' />';
 			$output .= '<label class="explain" for="' . esc_attr( $value['id'] ) . '">' . wp_kses( $explain_value, $allowedtags) . '</label>';
 		break;
 		
-		// Multicheck
+		// Lista de selección múltiple
 		case "multicheck":
 			foreach ($value['options'] as $key => $option) {
 				$checked = '';
@@ -170,18 +170,18 @@ function optionsframework_fields() {
 			}
 		break;
 		
-		// Color picker
+		// Selector de color
 		case "color":
 			$output .= '<div id="' . esc_attr( $value['id'] . '_picker' ) . '" class="colorSelector"><div style="' . esc_attr( 'background-color:' . $val ) . '"></div></div>';
 			$output .= '<input class="of-color" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" id="' . esc_attr( $value['id'] ) . '" type="text" value="' . esc_attr( $val ) . '" />';
 		break; 
 		
-		// Uploader
+		// Cargador
 		case "upload":
-			$output .= optionsframework_medialibrary_uploader( $value['id'], $val, null ); // New AJAX Uploader using Media Library	
+			$output .= optionsframework_medialibrary_uploader( $value['id'], $val, null ); // Nuevo cargador en AJAX usando Media Library	
 		break;
 		
-		// Typography
+		// Tipografía
 		case 'typography':	
 		
 			$typography_stored = $val;
@@ -220,7 +220,7 @@ function optionsframework_fields() {
 
 		break;
 		
-		// WPBS Typography - removed font size from std typography set of fields
+		// Tipografía WPBS - remueve el tamaño de fuente del grupo de campos std de la tipografía
 				case 'wpbs_typography':	
 				
 					$wpbs_typography_stored = $val;
@@ -260,7 +260,7 @@ function optionsframework_fields() {
 			$output .= '<div id="' . esc_attr( $value['id'] ) . '_color_picker" class="colorSelector"><div style="' . esc_attr( 'background-color:' . $background['color'] ) . '"></div></div>';
 			$output .= '<input class="of-color of-background of-background-color" name="' . esc_attr( $option_name . '[' . $value['id'] . '][color]' ) . '" id="' . esc_attr( $value['id'] . '_color' ) . '" type="text" value="' . esc_attr( $background['color'] ) . '" />';
 			
-			// Background Image - New AJAX Uploader using Media Library
+			// Background Image - Nuevo cargador en AJAX usando Media Library
 			if (!isset($background['image'])) {
 				$background['image'] = '';
 			}
@@ -344,7 +344,7 @@ function optionsframework_fields() {
 			}
 
 			$output .= '<div class="' . esc_attr( $class ) . '">' . "\n";
-			$output .= '<a id="check-bootswatch" class="button-secondary">Refresh themes</a>';
+			$output .= '<a id="check-bootswatch" class="button-secondary">Actualizar temas</a>';
 			$output .= '<div id="check-status"></div>';
 			$output .= '</div>';
 			break;

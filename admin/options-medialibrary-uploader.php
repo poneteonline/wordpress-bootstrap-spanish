@@ -3,27 +3,27 @@
 /**
  * WooThemes Media Library-driven AJAX File Uploader Module (2010-11-05)
  *
- * Slightly modified for use in the Options Framework.
+ * Modificado levemente para ser usado en el framework de opciones.
  */
 
 if ( is_admin() ) {
 	
-	// Load additional css and js for image uploads on the Options Framework page
+	// Carga css y js adicionales para la carga de imágenes en la página de opciones del framework
 	$of_page= 'appearance_page_options-framework';
 	add_action( "admin_print_styles-$of_page", 'optionsframework_mlu_css', 0 );
 	add_action( "admin_print_scripts-$of_page", 'optionsframework_mlu_js', 0 );	
 }
 
 /**
- * Sets up a custom post type to attach image to.  This allows us to have
- * individual galleries for different uploaders.
+ * Establece una entrada personalizada para adjuntar la imagen. Esto nos permite tener
+ * galerías individuales para diferentes cargadores.
  */
 
 if ( ! function_exists( 'optionsframework_mlu_init' ) ) {
 	function optionsframework_mlu_init () {
 		register_post_type( 'optionsframework', array(
 			'labels' => array(
-				'name' => __( 'Options Framework Internal Container','optionsframework' ),
+				'name' => __( 'Contenedor interno del framework de opciones','optionsframework' ),
 			),
 			'public' => true,
 			'show_ui' => false,
@@ -39,8 +39,8 @@ if ( ! function_exists( 'optionsframework_mlu_init' ) ) {
 }
 
 /**
- * Adds the Thickbox CSS file and specific loading and button images to the header
- * on the pages where this function is called.
+ * Agrega el archivo Thickbox CSS e imágenes especificas de botón y carga a la cabecera
+ * en las páginas donde esta función es llamada.
  */
 
 if ( ! function_exists( 'optionsframework_mlu_css' ) ) {
@@ -61,15 +61,15 @@ if ( ! function_exists( 'optionsframework_mlu_css' ) ) {
 }
 
 /**
- * Registers and enqueues (loads) the necessary JavaScript file for working with the
- * Media Library-driven AJAX File Uploader Module.
+ * Registre y encola (cargas) el archivo JavaScript necesario para trabajar con el
+ * modulo de carga de archivos AJAX, Media Library-driven.
  */
 
 if ( ! function_exists( 'optionsframework_mlu_js' ) ) {
 
 	function optionsframework_mlu_js () {
 	
-		// Registers custom scripts for the Media Library AJAX uploader.
+		// Registra scripts personalizados para el cargador AJAX Librería de medios.
 		wp_register_script( 'of-medialibrary-uploader', OPTIONS_FRAMEWORK_DIRECTORY .'js/of-medialibrary-uploader.js', array( 'jquery', 'thickbox' ) );
 		wp_enqueue_script( 'of-medialibrary-uploader' );
 		wp_enqueue_script( 'media-upload' );
@@ -78,16 +78,16 @@ if ( ! function_exists( 'optionsframework_mlu_js' ) ) {
 }
 
 /**
- * Media Uploader Using the WordPress Media Library.
+ * Cargador de medios usando la Librería de medios de WordPress
+ * 
+ * Parámetros:
+ * - string $_id - Una señal para identificar este campo (el nombre)
+ * - string $_value - El valor de este campo, si esta presente.
+ * - string $_mode - El modo de presentación del campo.
+ * - string $_desc - Una descripción adicional del campo.
+ * - int $_postid - Un identificador opcional de la entrada (usado en las cajas meta).
  *
- * Parameters:
- * - string $_id - A token to identify this field (the name).
- * - string $_value - The value of the field, if present.
- * - string $_mode - The display mode of the field.
- * - string $_desc - An optional description of the field.
- * - int $_postid - An optional post id (used in the meta boxes).
- *
- * Dependencies:
+ * Dependencias:
  * - optionsframework_mlu_get_silentpost()
  */
 
@@ -97,7 +97,7 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 	
 		$optionsframework_settings = get_option('optionsframework');
 		
-		// Gets the unique option id
+		// Obtiene un id único de opciones
 		$option_name = $optionsframework_settings['id'];
 	
 		$output = '';
@@ -108,10 +108,10 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 		$name = '';
 		
 		$id = strip_tags( strtolower( $_id ) );
-		// Change for each field, using a "silent" post. If no post is present, one will be created.
+		// Cambia para cada campo, usando una entrada "silenciosa". Si no hay una entrada presente, una será creada.
 		$int = optionsframework_mlu_get_silentpost( $id );
 		
-		// If a value is passed and we don't have a stored value, use the value that's passed through.
+		// Si un valor el proporcionado y no tenemos un valor guardado, usa el valor que ha sido proporcionado.
 		if ( $_value != '' && $value == '' ) {
 			$value = $_value;
 		}
@@ -125,7 +125,7 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 		
 		if ( $value ) { $class = ' has-file'; }
 		$output .= '<input id="' . $id . '" class="upload' . $class . '" type="text" name="'.$name.'" value="' . $value . '" />' . "\n";
-		$output .= '<input id="upload_' . $id . '" class="upload_button button" type="button" value="' . __( 'Upload','optionsframework' ) . '" rel="' . $int . '" />' . "\n";
+		$output .= '<input id="upload_' . $id . '" class="upload_button button" type="button" value="' . __( 'Subir','optionsframework' ) . '" rel="' . $int . '" />' . "\n";
 		
 		if ( $_desc != '' ) {
 			$output .= '<span class="of_metabox_desc">' . $_desc . '</span>' . "\n";
@@ -134,7 +134,7 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 		$output .= '<div class="screenshot" id="' . $id . '_image">' . "\n";
 		
 		if ( $value != '' ) { 
-			$remove = '<a href="javascript:(void);" class="mlu_remove button">Remove</a>';
+			$remove = '<a href="javascript:(void);" class="mlu_remove button">Eliminar</a>';
 			$image = preg_match( '/(^.*\.jpg|jpeg|png|gif|ico*)/i', $value );
 			if ( $image ) {
 				$output .= '<img src="' . $value . '" alt="" />'.$remove.'';
@@ -144,11 +144,11 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 					$title = $parts[$i];
 				}
 
-				// No output preview if it's not an image.			
+				// No hay previsualización si no existe una imagen.			
 				$output .= '';
 			
-				// Standard generic output if it's not an image.	
-				$title = __( 'View File', 'optionsframework' );
+				// Salida estándar si no es una imagen.	
+				$title = __( 'Ver archivo', 'optionsframework' );
 				$output .= '<div class="no_image"><span class="file_link"><a href="' . $value . '" target="_blank" rel="external">'.$title.'</a></span>' . $remove . '</div>';
 			}	
 		}
@@ -158,15 +158,15 @@ if ( ! function_exists( 'optionsframework_medialibrary_uploader' ) ) {
 }
 
 /**
- * Uses "silent" posts in the database to store relationships for images.
- * This also creates the facility to collect galleries of, for example, logo images.
+ * Usa entradas "silenciosas" en la base de datos para almacenar las relaciones entre imágenes.
+ * Esto además facilita la posibilidad de coleccionar galerías de, por ejemplo, imágenes de logos.
  * 
- * Return: $_postid.
- *
- * If no "silent" post is present, one will be created with the type "optionsframework"
- * and the post_name of "of-$_token".
- *
- * Example Usage:
+ * Retorna: $_postid.
+ * 
+ * Si no hay entradas "silenciosas" presentes, una será creada con el tipo "optionsframework"
+ * y el nombre (post_name) "of-$_token".
+ * 
+ * Ejemplo de uso:
  * optionsframework_mlu_get_silentpost ( 'of_logo' );
  */
 
@@ -177,35 +177,35 @@ if ( ! function_exists( 'optionsframework_mlu_get_silentpost' ) ) {
 		global $wpdb;
 		$_id = 0;
 	
-		// Check if the token is valid against a whitelist.
+		// Verifica en una lista blanca si la señal es valida.
 		// $_whitelist = array( 'of_logo', 'of_custom_favicon', 'of_ad_top_image' );
-		// Sanitise the token.
+		// Descontamina la señal.
 		
 		$_token = strtolower( str_replace( ' ', '_', $_token ) );
 		
 		// if ( in_array( $_token, $_whitelist ) ) {
 		if ( $_token ) {
 			
-			// Tell the function what to look for in a post.
+			// Le dice a la función que buscar en una entrada.
 			
 			$_args = array( 'post_type' => 'optionsframework', 'post_name' => 'of-' . $_token, 'post_status' => 'draft', 'comment_status' => 'closed', 'ping_status' => 'closed' );
 			
-			// Look in the database for a "silent" post that meets our criteria.
+			// Busca en la base de datos una entrada "silenciosa" que cumpla los criterios de búsqueda.
 			$query = 'SELECT ID FROM ' . $wpdb->posts . ' WHERE post_parent = 0';
 			foreach ( $_args as $k => $v ) {
 				$query .= ' AND ' . $k . ' = "' . $v . '"';
-			} // End FOREACH Loop
+			} // Fin del loop FOREACH
 			
 			$query .= ' LIMIT 1';
 			$_posts = $wpdb->get_row( $query );
 			
-			// If we've got a post, loop through and get it's ID.
+			// Si tenemos una entrada, la recorre y obtiene su ID.
 			if ( count( $_posts ) ) {
 				$_id = $_posts->ID;
 			} else {
 			
-				// If no post is present, insert one.
-				// Prepare some additional data to go with the post insertion.
+				// Si no hay una entrada presente, inserta una.
+				// Prepara alguna información adicional para acompañar la creación de la entrada.
 				$_words = explode( '_', $_token );
 				$_title = join( ' ', $_words );
 				$_title = ucwords( $_title );
@@ -219,7 +219,7 @@ if ( ! function_exists( 'optionsframework_mlu_get_silentpost' ) ) {
 }
 
 /**
- * Trigger code inside the Media Library popup.
+ * Ejecuta código dentro de la ventana emergente Librería de medios.
  */
 
 if ( ! function_exists( 'optionsframework_mlu_insidepopup' ) ) {
@@ -239,7 +239,7 @@ if ( ! function_exists( 'optionsframework_mlu_js_popup' ) ) {
 	function optionsframework_mlu_js_popup () {
 
 		$_of_title = $_REQUEST['of_title'];
-		if ( ! $_of_title ) { $_of_title = 'file'; } // End IF Statement
+		if ( ! $_of_title ) { $_of_title = 'file'; } // Fin de la declaración IF
 ?>
 	<script type="text/javascript">
 	<!--
@@ -247,21 +247,22 @@ if ( ! function_exists( 'optionsframework_mlu_js_popup' ) ) {
 		
 		jQuery.noConflict();
 		
-		// Change the title of each tab to use the custom title text instead of "Media File".
+		// Cambia el título de cada pestaña para usar un título personalizado en lugar de "Archivo multimedia".
 		$( 'h3.media-title' ).each ( function () {
 			var current_title = $( this ).html();
-			var new_title = current_title.replace( 'media file', '<?php echo $_of_title; ?>' );
+			//var new_title = current_title.replace( 'archivo multimedia', '<?php echo $_of_title; ?>' );
+			var new_title = current_title.replace( 'archivo multimedia', '<?php echo $_of_title; ?>' );
 			$( this ).html( new_title );
 		
 		} );
 		
-		// Change the text of the "Insert into Post" buttons to read "Use this File".
-		$( '.savesend input.button[value*="Insert into Post"], .media-item #go_button' ).attr( 'value', 'Use this File' );
+		// Cambia el texto del botón "Insertar en la entrada" por el texto "Usar este archivo".
+		$( '.savesend input.button[value*="Insert into Post"], .media-item #go_button' ).attr( 'value', 'Usar este archivo' );
 		
-		// Hide the "Insert Gallery" settings box on the "Gallery" tab.
+		// Esconde la caja de ajustes "Insertar galería" en la pestaña "Galería".
 		$( 'div#gallery-settings' ).hide();
 		
-		// Preserve the "is_optionsframework" parameter on the "delete" confirmation button.
+		// Preserva el parámetro "is_optionsframework" en el botón de confirmación "eliminar".
 		$( '.savesend a.del-link' ).click ( function () {
 		
 			var continueButton = $( this ).next( '.del-attachment' ).children( 'a.button[id*="del"]' );
@@ -279,13 +280,13 @@ if ( ! function_exists( 'optionsframework_mlu_js_popup' ) ) {
 }
 
 /**
- * Triggered inside the Media Library popup to modify the title of the "Gallery" tab.
+ * Ventana emergente ejecutada dentro de la Librería de medios para modificar el título de la pestaña "Galería".
  */
 
 if ( ! function_exists( 'optionsframework_mlu_modify_tabs' ) ) {
 
 	function optionsframework_mlu_modify_tabs ( $tabs ) {
-		$tabs['gallery'] = str_replace( __( 'Gallery', 'optionsframework' ), __( 'Previously Uploaded', 'optionsframework' ), $tabs['gallery'] );
+		$tabs['gallery'] = str_replace( __( 'Galería', 'optionsframework' ), __( 'Recientemente subida', 'optionsframework' ), $tabs['gallery'] );
 		return $tabs;
 	}
 }

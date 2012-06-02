@@ -1,23 +1,23 @@
 <?php
 /* 
-This file handles the admin area and functions.
-You can use this file to make changes to the
-dashboard. Updates to this page are coming soon.
-It's turned off by default, but you can call it
-via the functions file.
+Este archivo maneja las áreas de administración y funciones.
+Puedes usar este archivo para realizar cambios a el
+dashboard. Las actualizaciones a esta página vendrán pronto.
+Esta apagado de forma predeterminada, pero puedes llamarlo
+por medio del archivo de funciones.
 
-Developed by: Eddie Machado
+Desarrollado por: Eddie Machado
 URL: http://themble.com/bones/
 
-Special Thanks for code & inspiration to:
+Agradecimientos especiales por código & inspiración a:
 @jackmcconnell - http://www.voltronik.co.uk/
 Digging into WP - http://digwp.com/2010/10/customize-wordpress-dashboard/
 
 */
 
-/************* DASHBOARD WIDGETS *****************/
+/************* WIDGETS DEL DASHBOARD *****************/
 
-// disable default dashboard widgets
+// deshabilitar los widgets predeterminados del dashboard
 function disable_default_dashboard_widgets() {
 	// remove_meta_box('dashboard_right_now', 'dashboard', 'core');    // Right Now Widget
 	remove_meta_box('dashboard_recent_comments', 'dashboard', 'core'); // Comments Widget
@@ -33,33 +33,33 @@ function disable_default_dashboard_widgets() {
 	remove_meta_box('yoast_db_widget', 'dashboard', 'normal');         // Yoast's SEO Plugin Widget
 	
 	/* 
-	have more plugin widgets you'd like to remove? 
-	share them with us so we can get a list of 
-	the most commonly used. :D
+	existen más plugins o widgets que quisieras eliminar?
+	compártelos con nosotros para que hagamos una lista de
+	los más comúnmente usados. :D
 	https://github.com/eddiemachado/bones/issues
 	*/
 }
 
 /*
-Now let's talk about adding your own custom Dashboard widget.
-Sometimes you want to show clients feeds relative to their 
-site's content. For example, the NBA.com feed for a sports
-site. Here is an example Dashboard Widget that displays recent
-entries from an RSS Feed.
+Ahora hablemos acerca de incluir tus propios widgets para el Dashboard.
+Algunas veces quieres mostrar feeds relativos al contenido
+de tu sitio. Por ejemplo, el feed the NBA.com para un sitio
+de deportes. A continuación verás un ejemplo de un widget para el Dashboard
+que muestra las entradas recientes de un feed RSS.
 
-For more information on creating Dashboard Widgets, view:
+Para mas información sobre crear widgets para el Dashboard mira:
 http://digwp.com/2010/10/customize-wordpress-dashboard/
 */
 
-// RSS Dashboard Widget 
+// Widget RSS del Dashboard 
 function bones_rss_dashboard_widget() {
 	if(function_exists('fetch_feed')) {
-		include_once(ABSPATH . WPINC . '/feed.php');               // include the required file
-		$feed = fetch_feed('http://themble.com/feed/rss/');        // specify the source feed
-		$limit = $feed->get_item_quantity(7);                      // specify number of items
-		$items = $feed->get_items(0, $limit);                      // create an array of items
+		include_once(ABSPATH . WPINC . '/feed.php');               // incluye el archivo requerido
+		$feed = fetch_feed('http://themble.com/feed/rss/');        // especifica la fuente del feed
+		$limit = $feed->get_item_quantity(7);                      // especifica el número de elementos
+		$items = $feed->get_items(0, $limit);                      // crea un arreglo de elementos
 	}
-	if ($limit == 0) echo '<div>The RSS Feed is either empty or unavailable.</div>';   // fallback message 
+	if ($limit == 0) echo '<div>El Feed RSS está vacío o no se encuentra disponible</div>';   // mensaje de reserva 
 	else foreach ($items as $item) : ?>
 
 	<h4 style="margin-bottom: 0;">
@@ -73,56 +73,54 @@ function bones_rss_dashboard_widget() {
 	<?php endforeach; 
 }
 
-// calling all custom dashboard widgets
+// llamando todos los widgets personalizados del dashboard
 function bones_custom_dashboard_widgets() {
-	wp_add_dashboard_widget('bones_rss_dashboard_widget', 'Recently on Themble (Customize on admin.php)', 'bones_rss_dashboard_widget');
+	wp_add_dashboard_widget('bones_rss_dashboard_widget', 'Recientemente en Themble (Personalizar en admin.php)', 'bones_rss_dashboard_widget');
 	/*
-	Be sure to drop any other created Dashboard Widgets 
-	in this function and they will all load.
+	Asegurate de incluir cualquier otro widget del Dashboard creado
+	en esta función y todos serán cargados.
 	*/
 }
 
 
-// removing the dashboard widgets
+// eliminando los widgets del dashboard
 add_action('admin_menu', 'disable_default_dashboard_widgets');
-// adding any custom widgets
+// incluyendo cualquier widget personalizado
 add_action('wp_dashboard_setup', 'bones_custom_dashboard_widgets');
 
 
-/************* CUSTOM LOGIN PAGE *****************/
+/************* PAGINA PERSONALIZADA DE INGRESO *****************/
 
-// calling your own login css so you can style it 
+// llamando tu propia hoja de estilo para la página de ingreso para que puedas modificarla 
 function bones_login_css() {
-	/* i couldn't get wp_enqueue_style to work :( */
+	/* no pude hacer funcionar wp_enqueue_style :( */
 	echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/library/css/login.css">';
 }
 
-// changing the logo link from wordpress.org to your site 
+// cambiando el logo enlace de wordpress.org por el de tu sitio 
 function bones_login_url() { echo bloginfo('url'); }
 
-// changing the alt text on the logo to show your site name 
+// cambiando el texto alternativo del logo para mostrar el nombre de tu sitio 
 function bones_login_title() { echo get_option('blogname'); }
 
-// calling it only on the login page
+// llamándolo solo para la página de ingreso
 add_action('login_head', 'bones_login_css');
 add_filter('login_headerurl', 'bones_login_url');
 add_filter('login_headertitle', 'bones_login_title');
 
 
-/************* CUSTOMIZE ADMIN *******************/
+/************* ADMINISTRACION PERSONALIZADA *******************/
 
 /*
-I don't really reccomend editing the admin too much
-as things may get funky if Wordpress updates. Here
-are a few funtions which you can choose to use if 
-you like.
+Yo realmente no recomiendo editar mucho la página de administración
+puesto que las cosas pueden resultar mal si Wordpress se actualiza. Aquí
+hay algunas funciones que puedes elegir usar si así lo deseas.
 */
 
-// Custom Backend Footer
+// Backend Footer personalizado
 function bones_custom_admin_footer() {
-	echo '<span id="footer-thankyou">Developed by <a href="http://yoursite.com" target="_blank">Your Site Name</a></span>. Built using <a href="http://themble.com/bones" target="_blank">Bones</a>.';
+	echo '<span id="footer-thankyou">Desarrollado por <a href="http://tusitio.com" target="_blank">El nombre de tu sitio</a></span>. Construído usando <a href="http://themble.com/bones" target="_blank">Bones</a>.';
 }
 
-// adding it to the admin area
+// incluyéndolo en el área de administración
 add_filter('admin_footer_text', 'bones_custom_admin_footer');
-

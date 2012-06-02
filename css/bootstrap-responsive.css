@@ -36,15 +36,15 @@
     display: block;
     width: 100%;
     min-height: 28px;
-    /* Make inputs at least the height of their button counterpart */
+    /* Hacer los ingresos al menos tan altos como su contraparte en botón */
   
-    /* Makes inputs behave like true block-level elements */
+    /* Hacer que los ingresos se comporten como verdaderos elementos de nivel de bloque */
   
     -webkit-box-sizing: border-box;
-    /* Older Webkit */
+    /* Antiguo Webkit */
   
     -moz-box-sizing: border-box;
-    /* Older FF */
+    /* Antiguo FF */
   
     -ms-box-sizing: border-box;
     /* IE8 */

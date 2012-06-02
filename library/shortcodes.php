@@ -2,9 +2,9 @@
 
 // shortcodes
 
-// Gallery shortcode
+// Shortcode Galería
 
-// remove the standard shortcode
+// elimina el shortcode estándar
 remove_shortcode('gallery', 'gallery_shortcode');
 add_shortcode('gallery', 'gallery_shortcode_tbs');
 
@@ -29,7 +29,7 @@ function gallery_shortcode_tbs($attr) {
 
 
 
-// Buttons
+// Botones
 function buttons( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 	'type' => 'default', /* primary, default, info, success, danger, warning, inverse */
@@ -61,7 +61,7 @@ function buttons( $atts, $content = null ) {
 
 add_shortcode('button', 'buttons'); 
 
-// Alerts
+// Alertas
 function alerts( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 	'type' => 'alert-info', /* alert-info, alert-success, alert-error */
@@ -80,7 +80,7 @@ function alerts( $atts, $content = null ) {
 
 add_shortcode('alert', 'alerts');
 
-// Block Messages
+// Mensajes en bloque
 function block_messages( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 	'type' => 'alert-info', /* alert-info, alert-success, alert-error */
@@ -99,7 +99,7 @@ function block_messages( $atts, $content = null ) {
 
 add_shortcode('block-message', 'block_messages'); 
 
-// Block Messages
+// Mensajes en bloque
 function blockquotes( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 	'float' => '', /* left, right */

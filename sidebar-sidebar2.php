@@ -10,7 +10,7 @@
 						
 						<div class="alert-message">
 						
-							<p><?php _e("Por favor activa algunos Widgets","bonestheme"); ?>.</p>
+							<p><?php _e("Por favor active algunos Widgets","bonestheme"); ?>.</p>
 						
 						</div>
 

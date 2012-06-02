@@ -1,15 +1,15 @@
 /******************************************************************
-Bones Custom Login Stylesheet
+Hoja de estilo personalizada para iniciar sesión en Bones
 
-Designed by Eddie Machado
+Diseñada por Eddie Machado
 http://themble.com/bones
 hello@themble.com
 
-This stylesheet is loaded (if admin.php is setup in your 
-functions file) on the login page. This way you can style 
-the login page. It won't affect any other page, admin or front-end.
+Esta hoja de estilo es cargada (si admin.php esta incluido en su
+archivo de funciones) en la pagina de inicio de sesión. De este modo puedes
+modificar la página de inicio de sesión. No afectará otras páginas, administración o diseño.
 
-For more info, check out the codex:
+Para más información, visita el codex:
 http://codex.wordpress.org/Creating_Admin_Themes
 
 ******************************************************************/
@@ -18,15 +18,15 @@ http://codex.wordpress.org/Creating_Admin_Themes
 body.login {} 
 
 
-#login {} /* the form box */
+#login {} /* la caja del formulario */
 
 /*
-This is the Wordpress logo in the admin area.
-You'll have to load your own images and mess
-with the width and height.
+Este es el logo de Wordpress en el área de administración.
+Tendrás que cargar tus propias imágenes y jugar
+con el ancho y el alto de estas.
 */
 h1 a {
-	background: url(../images/login-logo.png) no-repeat top center; /* make sure to replace this! */
+	background: url(../images/login-logo.png) no-repeat top center; /* asegurate de reemplazar esto! */
 	width: 326px;
 	height: 67px;
 	text-indent: -9999px;
@@ -69,8 +69,8 @@ body form .input {
 }
 
 /*
-You'll have to override some of the default styles
-but since we're referencing the id, it should be easy.
+Vas a tener que reemplazar algunos de los estilos predeterminados
+pero como estamos referenciando el id, debería ser fácil.
 */
-#wp-submit {} /* login button*/
+#wp-submit {} /* botón de inicio de sesión*/
 
