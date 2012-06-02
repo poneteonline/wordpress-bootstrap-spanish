@@ -1,41 +1,46 @@
-WORDPRESS BOOTSTRAP
-===================
+WORDPRESS BOOTSTRAP EN ESPAÑOL
+==============================
 
-Twitter's bootstrap (http://twitter.github.com/bootstrap) in Wordpress theme form. Using Eddie Machado's Bones for a starting point (https://github.com/eddiemachado/bones). 
+Tema para WordPress basado en bootstrap de Twitter (http://twitter.github.com/bootstrap). Usando Bones de Eddie Machado como punto de partida (https://github.com/eddiemachado/bones).
 
-FEATURES
-________
+CARACTERISTICAS
+_______________
 
-We’ve built the WordPress Bootstrap theme so that it could be used as-is or as a starting point for theme developers. It’s built on top of the brilliant Bones theme framework by Eddie Machado and based on v2.0 of Twitter’s Bootstrap.
+Hemos construido el tema WordPress Bootstrap para que pueda ser usado como tal o como punto de partida para desarrolladores de temas. Esta construido sobre el brillante marco de desarrollo Bones de Eddie Machado y basado en la versión 2.0 de Bootstrap de Twitter. 
 
-Here’s what we’ve got so far. Watch this project on Github to keep up with some enhancements we’re developing.
+Aquí esta lo que tenemos hasta el momento. Observa este proyecto en Github para mantenerte enterado de algunas mejoras en las que estamos trabajando.
 
-Responsive
-__________
+Adaptable
+_________
 
-We’ve built this with a responsive approach.  This will look good on everything from mobile to desktop.
+Hemos construido esto con un enfoque adaptable. Esto se verá bien en cualquier dispositivo desde móviles hasta equipos de escritorio.
 
-Page Templates
-______________
+Plantillas de página
+____________________
 
-We’ve packaged four different page templates into this theme.
+Hemos incluido cuatro plantillas de página diferentes en este tema.
 
-    - Homepage template (seen on the homepage of this site)
-    - Standard page with right sidebar (this page)
-    - Page with left sidebar
-    - Full width page
+    - Plantilla de página de inicio (la puedes ver en la página de inicio de este sitio)
+    - Página estándar con barra lateral derecha (esta página)
+    - Página con barra lateral izquierda
+    - Página de ancho completo
 
-Theme Options Panel
-___________________
+Panel de opciones del tema
+__________________________
 
-Want to change some colors? Want the top nav to scroll with the content? Hide the search box in the top nav? Do it all in our options panel.
+Quieres cambiar algunos colores? Quieres que la barra de navegación superior se mueva con el contenido? Ocultar la barra de búsqueda en la barra de navegación superior? Hazlo todo en nuestro panel de opciones.
 
 Shortcodes
 __________
 
-We’ve built in some shortcodes so you can easily add UI elements found in Twitter Bootstrap.
+Hemos construido algunos shortcodes para que puedas añadir fácilmente elementos gráficos encontrados en Bootstrap de Twitter.
 
-Sidebars
-________
+Barras laterales
+________________
 
-We’ve built in two different sidebars. One for the homepage and one for the other pages. Add widgets to your heart’s content.
+Hemos incluido dos diferentes barras laterales. Una para la página de inicio y una para las otras páginas. Añade widgets al corazón de tu contenido.
+
+Traducción al español
+_____________________
+
+WordPress Bootstrap ha sido traducido al español por David Gómez y Yeiner Fernandez para emsNet.
