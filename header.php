@@ -26,30 +26,9 @@
 		<!-- Para todo lo demás -->
 		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
 		
-		<!-- Toma el jQuery del CDN de Google, con una URL relativa al protocolo; convirtiendolo en local si es necesario -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script>window.jQuery || document.write(unescape('%3Cscript src="<?php echo get_template_directory_uri(); ?>/library/js/libs/jquery-1.7.1.min.js"%3E%3C/script%3E'))</script>
-		
-		<script src="<?php echo get_template_directory_uri(); ?>/library/js/modernizr.full.min.js"></script>
-		
-		<!-- media-queries.js (de reserva) -->
-		<!--[if lt IE 9]>
-			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>			
-		<![endif]-->
 
-		<!-- html5.js -->
-		<!--[if lt IE 9]>
-			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		
-  		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-		
-		<!-- funciones del head de wordpress -->
-		<?php wp_head(); ?>
-		<!-- fin del head de wordpress -->
-		
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css">
-		
+	
 		<?php
 			$theme_options_styles = '';
 		
@@ -219,6 +198,28 @@
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap-responsive.min.css">
 		<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 		
+		<!-- Toma el jQuery del CDN de Google, con una URL relativa al protocolo; convirtiendolo en local si es necesario -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script>window.jQuery || document.write(unescape('%3Cscript src="<?php echo get_template_directory_uri(); ?>/library/js/libs/jquery-1.7.1.min.js"%3E%3C/script%3E'))</script>
+		
+		<script src="<?php echo get_template_directory_uri(); ?>/library/js/modernizr.full.min.js"></script>
+		
+		<!-- media-queries.js (de reserva) -->
+		<!--[if lt IE 9]>
+			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>			
+		<![endif]-->
+
+		<!-- html5.js -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		
+  		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+		
+		<!-- funciones de la cabecera de wordpress -->
+		<?php wp_head(); ?>
+		<!-- fin de la cabecera de wordpress -->
+
 		<?php 
 
 			// comprueba el nivel del usuario wp
