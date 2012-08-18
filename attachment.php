@@ -17,6 +17,7 @@
 						</header> <!-- fin de la cabecera del artículo -->
 					
 						<section class="post_content clearfix" itemprop="articleBody">
+							
 							<?php the_content(); ?>
 							
 						</section> <!-- fin de la sección del artículo -->

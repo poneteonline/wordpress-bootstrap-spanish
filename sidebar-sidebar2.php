@@ -8,7 +8,7 @@
 
 						<!-- Este contenido se muestra en caso de que no hayan widgets definidos en el backend. -->
 						
-						<div class="alert-message">
+						<div class="alert alert-message">
 						
 							<p><?php _e("Por favor active algunos Widgets","bonestheme"); ?>.</p>
 						
