@@ -57,7 +57,7 @@ add_filter('excerpt_more', 'bones_excerpt_more');
 function bones_theme_support() {
 	add_theme_support('post-thumbnails');      // miniaturas wp (tamaños controlados desde functions.php)
 	set_post_thumbnail_size(125, 125, true);   // tamaño de miniaturas predeterminado
-	add_custom_background();                   // fondo de wp personalizado
+	add_theme_support( 'custom-background' );  // fondo de wp personalizado
 	add_theme_support('automatic-feed-links'); // cosita rss
 	// para incluir soporte para imagen de cabecera visitar: http://themble.com/support/adding-header-background-image-support/
 	// añadiendo soporte para formato de entrada
@@ -121,8 +121,8 @@ function bones_footer_links() {
  
 // esta es la reserva para el menú de la cabecera
 function bones_main_nav_fallback() { 
-	// no se llamará a esto en caso de páginas con múltiples niveles - espero incluir menús desplegables como una mejora
-	//wp_page_menu( 'show_home=Home&menu_class=menu' ); 
+	// Encontrar la forma de hacer de esta salida html amistosa para bootstrap
+	//wp_page_menu( 'show_home=Home&menu_class=nav' );
 }
 
 // esta es la reserva para el menú del pie de página

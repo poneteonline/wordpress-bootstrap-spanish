@@ -10,8 +10,8 @@ function optionsframework_fields() {
 	$optionsframework_settings = get_option('optionsframework');
 	
 	// Obtiene el nombre del tema para que podamos mostrarlo en la parte superior
-	$themename = get_theme_data(STYLESHEETPATH . '/style.css');
-	$themename = $themename['Name'];
+	$the_theme = wp_get_theme();
+	$themename = $the_theme->Name;
 
 	// Obtiene el id único de la opción
 	if (isset($optionsframework_settings['id'])) {

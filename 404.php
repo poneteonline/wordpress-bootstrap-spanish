@@ -8,13 +8,24 @@
 						
 						<header>
 							
-							<div class="page-header"><h1>404 épico - El artículo no fue encontrado</h1></div>
-						
+							<div class="hero-unit">
+
+								<h1>Epic 404 - El artículo no fue encontrado</h1>
+								<p>Esto es embarazoso. No podemos encontrar lo que estas buscando.</p>
+															
+							</div>
+											
 						</header> <!-- fin de la cabecera del artículo -->
 					
 						<section class="post_content">
 							
-							<p>El artículo que estás buscando no fue encontrado, pero puedes buscar de nuevo!</p>
+							<p>Lo que sea que estés buscando no ha sido encontrado, pero puedes internar buscar de nuevo o puedes utilizar el siguiente formulario de búsqueda.</p>
+
+							<div class="row-fluid">
+								<div class="span12">
+									<?php get_search_form(); ?>
+								</div>
+							</div>
 					
 						</section> <!-- fin de la sección del artículo -->
 						
