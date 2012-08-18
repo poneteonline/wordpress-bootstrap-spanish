@@ -194,6 +194,19 @@ function optionsframework_options() {
 						
 	$options[] = array( "name" => "Otros ajustes",
 						"type" => "heading");
+
+	$options[] = array( "name" => "Slider carousel en la página de inicio",
+						"desc" => "Muestra el slider carousel de boostrap en la plantilla de página de la página de inicio. Este usa la característica imágenes destacadas de wordpress.",
+						"id" => "showhidden_slideroptions",
+						"std" => "0",
+						"type" => "checkbox");
+
+	$options[] = array( "name" => "Opciones del slider",
+						"desc" => "Número de entradas a mostrar.",
+						"id" => "slider_options",
+						"class" => "mini hidden",
+						"std" => "5",
+						"type" => "text");
 						
 	$options[] = array( "name" => "Color de fondo para la plantilla de la página de inicio hero-unit",
 						"desc" => "Predeterminado si ningún color es seleccionado",

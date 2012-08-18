@@ -48,6 +48,14 @@ jQuery(document).ready(function() {
 		jQuery('#section-wpbs_theme').show();
 	}
 	
+	jQuery('#showhidden_slideroptions').click(function() {
+		jQuery('#section-slider_options').fadeToggle(400);
+	});
+
+	if (jQuery('#showhidden_slideroptions:checked').val() !== undefined) {
+		jQuery('#section-slider_options').show();
+	}
+
 });
 </script>
 

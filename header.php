@@ -25,9 +25,6 @@
 		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/library/images/icons/l/apple-touch-icon.png">
 		<!-- Para todo lo demás -->
 		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
-
-		<!-- opciones del tema desde el panel de opciones -->
-		<?php get_wpbs_theme_options(); ?>
 		
 		<!-- media-queries.js (de reserva) -->
 		<!--[if lt IE 9]>
@@ -44,6 +41,9 @@
 		<!-- funciones de la cabecera de wordpress -->
 		<?php wp_head(); ?>
 		<!-- fin de la cabecera de wordpress -->
+
+		<!-- opciones del tema desde el panel de opciones -->
+		<?php get_wpbs_theme_options(); ?>
 
 		<?php 
 
