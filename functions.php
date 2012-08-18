@@ -435,7 +435,6 @@ class description_walker extends Walker_Nav_Menu
             
 }
 
-
 add_editor_style('editor-style.css');
 
 // Añadir el nombre de clase 'active' estándar de Twitter Bootstrap al enlace activo de la barra de navegación
@@ -452,7 +451,7 @@ function add_active_class($classes, $item) {
 
 function theme_styles()  
 { 
-    // Este es el archivo css compilado por LESS
+    // Este es el archivo css compilado por LESS - esto significa que compilas el archivo LESS de forma local y lo pones en el directorio apropiado si quieres realizar cualquier cambio al archivo bootstrap.css principal.
     wp_register_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.css', array(), '1.0', 'all' );
     wp_register_style( 'bootstrap-responsive', get_template_directory_uri() . '/css/responsive.css', array(), '1.0', 'all' );
     wp_register_style( 'wp-bootstrap', get_template_directory_uri() . '/style.css', array(), '1.0', 'all' );
@@ -478,7 +477,6 @@ function theme_js(){
   wp_enqueue_script('modernizr', array('jQuery'), '1.1', true);
 }
 add_action('wp_enqueue_scripts', 'theme_js');
-
 
 // Obtener las opciones del tema
 function get_wpbs_theme_options(){
