@@ -104,8 +104,7 @@ La página de comentarios para Bones
 			<div class="control-group">
 			  <label for="author"><?php _e("Nombre","bonestheme"); ?> <?php if ($req) echo "(requerido)"; ?></label>
 			  <div class="input-prepend">
-			  	<span class="add-on"><i class="icon-user"></i></span>
-			  	<input type="text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" placeholder="<?php _e("Tu nombre","bonestheme"); ?>" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> />
+			  	<span class="add-on"><i class="icon-user"></i></span><input type="text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" placeholder="<?php _e("Tu nombre","bonestheme"); ?>" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> />
 			  </div>
 		  	</div>
 		</li>
@@ -114,8 +113,7 @@ La página de comentarios para Bones
 			<div class="control-group">
 			  <label for="email"><?php _e("Correo","bonestheme"); ?> <?php if ($req) echo "(requerido)"; ?></label>
 			  <div class="input-prepend">
-			  	<span class="add-on"><i class="icon-envelope"></i></span>
-			  	<input type="email" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" placeholder="<?php _e("Tu correo electrónico","bonestheme"); ?>" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?> />
+			  	<span class="add-on"><i class="icon-envelope"></i></span><input type="email" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" placeholder="<?php _e("Correo","bonestheme"); ?>" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?> />
 			  	<span class="help-inline">(<?php _e("no será publicado","bonestheme"); ?>)</span>
 			  </div>
 		  	</div>
@@ -125,8 +123,7 @@ La página de comentarios para Bones
 			<div class="control-group">
 			  <label for="url"><?php _e("Sitio web","bonestheme"); ?></label>
 			  <div class="input-prepend">
-			  <span class="add-on"><i class="icon-home"></i></span>
-			  	<input type="url" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" placeholder="<?php _e("Tu sitio web","bonestheme"); ?>" tabindex="3" />
+			  <span class="add-on"><i class="icon-home"></i></span><input type="url" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" placeholder="<?php _e("Tu sitio web","bonestheme"); ?>" tabindex="3" />
 			  </div>
 		  	</div>
 		</li>

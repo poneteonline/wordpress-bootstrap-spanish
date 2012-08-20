@@ -38,6 +38,9 @@
 		
   		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 		
+  		<link rel="stylesheet/less" type="text/css" href="<?php echo get_template_directory_uri(); ?>/less/bootstrap.less">
+  		<link rel="stylesheet/less" type="text/css" href="<?php echo get_template_directory_uri(); ?>/less/responsive.less">
+
 		<!-- funciones de la cabecera de wordpress -->
 		<?php wp_head(); ?>
 		<!-- fin de la cabecera de wordpress -->
@@ -51,7 +54,32 @@
 			get_currentuserinfo(); 
 			// almacena para usar después
 			global $user_level; 
-		
+
+			// obtener la lista de los nombres de entrada para usarlos en el plugin 'typeahead' para la barra de búsqueda
+			if(of_get_option('search_bar', '1')) { // solamente hacer esto si estamos mostrando la barra de búsqueda en la barra de navegación
+
+				global $post;
+				$tmp_post = $post;
+				$get_num_posts = 40; // volver y obtener esta cantidad de títulos de entrada
+				$args = array( 'numberposts' => $get_num_posts );
+				$myposts = get_posts( $args );
+				$post_num = 0;
+
+				global $typeahead_data;
+				$typeahead_data = "[";
+
+				foreach( $myposts as $post ) :	setup_postdata($post);
+					$typeahead_data .= '"' . get_the_title() . '",';
+				endforeach;
+
+				$typeahead_data = substr($typeahead_data, 0, strlen($typeahead_data) - 1);
+
+				$typeahead_data .= "]";
+
+				$post = $tmp_post;
+
+			} // terminar si la barra de búsqueda es usada
+
 		?>
 				
 	</head>
@@ -82,7 +110,7 @@
 							
 							<?php if(of_get_option('search_bar', '1')) {?>
 							<form class="navbar-search pull-right" role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
-								<input name="s" id="s" type="text" class="search-query" placeholder="<?php _e('Buscar','bonestheme'); ?>">
+								<input name="s" id="s" type="text" class="search-query" autocomplete="off" placeholder="<?php _e('Buscar','bonestheme'); ?>" data-provide="typeahead" data-items="4" data-source='<?php echo $typeahead_data; ?>'>
 							</form>
 							<?php } ?>
 							
