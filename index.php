@@ -41,7 +41,11 @@
 						
 						<footer>
 			
-							<p class="tags"><?php the_tags('<span class="tags-title">' . __("Etiquetas","bonestheme") . ':</span> ', ' ', ''); ?></p>
+							<p class="tags">
+							<?php 
+							the_tags('<span class="tags-title">' . __("Etiquetas","bonestheme") . ':</span> <span class="label label-success" id="tag-cloud">', '</span> • <span class="label label-success" id="tag-cloud"> ', '</span>'); 
+							?>
+							</p>
 							
 						</footer> <!-- fin del pie del artículo -->
 					

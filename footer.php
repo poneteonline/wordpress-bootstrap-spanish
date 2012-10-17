@@ -15,7 +15,7 @@
 						<?php bones_footer_links(); // Ajustar usando la opción Menús en el Administrador de Wordpress ?>
 					</nav>
 					
-					<p class="pull-right"><a href="http://320press.com" id="credit320" title="Por los chicos de 320press">320press</a></p>
+					<p class="pull-right"><a href="http://www.poneteonline.com.ar" id="credit320" title="Ponete Online"> </a></p>
 			
 					<p class="attribution">&copy; <?php bloginfo('name'); ?></p>
 				
@@ -31,7 +31,19 @@
 		<![endif]-->
 		
 		<?php wp_footer(); // los scripts js están insertados usando esta función ?>
-
+<script src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/bootstrap-alert.js"></script>	
+<script type="text/javascript" src="/js/bootstrap-button.js"></script>
+<script type="text/javascript" src="/js/bootstrap-carousel.js"></script>
+<script type="text/javascript" src="/js/bootstrap-collapse.js"></script>
+<script type="text/javascript" src="/js/bootstrap-dropdown.js"></script>
+<script type="text/javascript" src="/js/bootstrap-modal.js"></script>
+<script type="text/javascript" src="/js/bootstrap-popover.js"></script>
+<script type="text/javascript" src="/js/bootstrap-scrollspy.js"></script>
+<script type="text/javascript" src="/js/bootstrap-tab.js"></script>
+<script type="text/javascript" src="/js/bootstrap-tooltip.js"></script>
+<script type="text/javascript" src="/js/bootstrap-transition.js"></script>
+<script type="text/javascript" src="/js/bootstrap-typeahead.js"></script>
 	</body>
 
 </html>

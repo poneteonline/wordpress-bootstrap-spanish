@@ -27,7 +27,9 @@
 						
 						<footer>
 			
-							<?php the_tags('<p class="tags"><span class="tags-title">' . __("Etiquetas","bonestheme") . ':</span> ', ' ', '</p>'); ?>
+							<?php 
+							the_tags('<span class="tags-title">' . __("Etiquetas","bonestheme") . ':</span> <span class="label label-success" id="tag-cloud">', '</span> • <span class="label label-success" id="tag-cloud"> ', '</span>'); 
+							?>
 							
 							<?php 
 							// mostrar el botón de editar solo si el usuario posee permisos para editar entradas
